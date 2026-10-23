@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cpath d=%22M16 19c-6 0-10-4-10-11 6 0 10 4 10 11Z%22 fill=%22%233C8C5C%22/%3E%3Cpath d=%22M16 15c5 0 9-3 9-9-5 0-9 3-9 9Z%22 fill=%22%23E3862A%22/%3E%3C/svg%3E">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Torella Soins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: jardin de simples — rail en dégradé feuillage, plan de travail clair parsemé de taches végétales, une couleur par famille de soins (phyto sauge, aroma lavande, gemmo églantine, oligo ciel, Bach calendula) */
+:root{
+  --bg:#F3F8F1; --surface:#FFFFFF; --sunk:#EEF4EC; --line:#DDE8DA; --ink:#1D2B23; --ink-2:#4A5D52; --ink-3:#7E9086;
+  --leaf:#3C8C5C; --leaf-soft:#DDF1E3; --leaf-ink:#215A3A;
+  --saffron:#E3862A; --saffron-soft:#FDEBD5;
+  --lav:#8A6CCB; --lav-soft:#EEE8FA;
+  --rose:#D45379; --rose-soft:#FCE4EB;
+  --sky:#3B8DB8; --sky-soft:#DDF0F8;
+  --sun:#D9A514; --sun-soft:#FBF2CF;
+  --ok:#2F8A55; --warn:#C27409; --bad:#C2413A; --warn-soft:#FCEBD2; --bad-soft:#FBE0DD;
+  --rail-a:#2E6B4A; --rail-b:#3A8B78; --rail-c:#6B7FC0; --rail-ink:#FFFFFF;
+  --blob-1:rgba(138,108,203,.13); --blob-2:rgba(227,134,42,.11); --blob-3:rgba(60,140,92,.12);
+  --f-display:"Young Serif", "Georgia", serif; --f-body:"Nunito", system-ui, sans-serif; --f-mono:"IBM Plex Mono", ui-monospace, monospace;
+  --r:14px; --shadow:0 1px 2px rgba(29,43,35,.05), 0 10px 30px -14px rgba(46,107,74,.28);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1713; --surface:#16211B; --sunk:#1C2A22; --line:#28382F; --ink:#E8F0EA; --ink-2:#AFC1B6; --ink-3:#7D9187;
+  --leaf:#72C895; --leaf-soft:#1C3527; --leaf-ink:#A8E3C0; --saffron:#F2A75A; --saffron-soft:#3A2814;
+  --lav:#B9A2F0; --lav-soft:#2A2340; --rose:#F08AA8; --rose-soft:#3D1F2A; --sky:#7CC0E4; --sky-soft:#172F3C; --sun:#EFCB5C; --sun-soft:#352C10;
+  --ok:#72C895; --warn:#F0B055; --bad:#EE8379; --warn-soft:#3A2A12; --bad-soft:#3D1F1C;
+  --rail-a:#173C2A; --rail-b:#1C4A44; --rail-c:#2F3A66; --rail-ink:#F2F7F3;
+  --blob-1:rgba(185,162,240,.08); --blob-2:rgba(242,167,90,.06); --blob-3:rgba(114,200,149,.07);
+  --shadow:0 10px 30px -14px rgba(0,0,0,.7); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1713; --surface:#16211B; --sunk:#1C2A22; --line:#28382F; --ink:#E8F0EA; --ink-2:#AFC1B6; --ink-3:#7D9187;
+  --leaf:#72C895; --leaf-soft:#1C3527; --leaf-ink:#A8E3C0; --saffron:#F2A75A; --saffron-soft:#3A2814;
+  --lav:#B9A2F0; --lav-soft:#2A2340; --rose:#F08AA8; --rose-soft:#3D1F2A; --sky:#7CC0E4; --sky-soft:#172F3C; --sun:#EFCB5C; --sun-soft:#352C10;
+  --ok:#72C895; --warn:#F0B055; --bad:#EE8379; --warn-soft:#3A2A12; --bad-soft:#3D1F1C;
+  --rail-a:#173C2A; --rail-b:#1C4A44; --rail-c:#2F3A66; --rail-ink:#F2F7F3;
+  --blob-1:rgba(185,162,240,.08); --blob-2:rgba(242,167,90,.06); --blob-3:rgba(114,200,149,.07);
+  --shadow:0 10px 30px -14px rgba(0,0,0,.7); color-scheme:dark}
+
+/* familles de soins */
+.c-phyto{--c:var(--leaf);--c-soft:var(--leaf-soft)} .c-aroma{--c:var(--lav);--c-soft:var(--lav-soft)} .c-gemmo{--c:var(--rose);--c-soft:var(--rose-soft)} .c-oligo{--c:var(--sky);--c-soft:var(--sky-soft)} .c-bach{--c:var(--saffron);--c-soft:var(--saffron-soft)} .c-autre{--c:var(--sun);--c-soft:var(--sun-soft)}
+.t1{--c:var(--leaf);--c-soft:var(--leaf-soft)} .t2{--c:var(--lav);--c-soft:var(--lav-soft)} .t3{--c:var(--saffron);--c-soft:var(--saffron-soft)} .t4{--c:var(--rose);--c-soft:var(--rose-soft)} .t5{--c:var(--sky);--c-soft:var(--sky-soft)}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(40rem 30rem at 95% -5%,var(--blob-1),transparent 70%),radial-gradient(34rem 26rem at 40% 105%,var(--blob-2),transparent 70%),radial-gradient(30rem 24rem at 10% 30%,var(--blob-3),transparent 70%);background-attachment:fixed}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--leaf);outline-offset:2px;border-radius:8px}
+.app{display:grid;grid-template-columns:244px 1fr;min-height:100%}
+.rail{position:sticky;top:0;height:100vh;padding:24px 14px;display:flex;flex-direction:column;gap:26px;color:var(--rail-ink);background:linear-gradient(170deg,var(--rail-a),var(--rail-b) 55%,var(--rail-c));overflow:hidden}
+.rail::after{content:"";position:absolute;right:-60px;bottom:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 65%);pointer-events:none}
+.brand{display:flex;align-items:center;gap:11px;padding:0 8px}
+.brand b{font-family:var(--f-display);font-weight:400;font-size:27px;letter-spacing:.2px;line-height:1}
+.brand small{display:block;font-size:11.5px;opacity:.8;margin-top:3px}
+.nav{display:flex;flex-direction:column;gap:3px;position:relative;z-index:1}
+.nav button{display:flex;align-items:center;gap:12px;border:0;background:none;padding:10px 12px;border-radius:12px;color:inherit;opacity:.82;font-weight:600;text-align:left}
+.nav button:hover{background:rgba(255,255,255,.1);opacity:1}
+.nav button[aria-current="page"]{background:rgba(255,255,255,.2);opacity:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.nav svg{width:20px;height:20px;flex:none}
+.rail .foot{margin-top:auto;font-size:12px;padding:0 8px;display:flex;flex-direction:column;gap:8px;opacity:.9;position:relative;z-index:1}
+.ctx{border-radius:12px;padding:10px 12px;font-size:13.5px;background:rgba(255,255,255,.14);font-weight:600}
+.ctx span{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;opacity:.75;font-weight:700}
+main{min-width:0;padding-block:30px 60px;padding-left:max(30px, env(safe-area-inset-left,0px));padding-right:max(30px, env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
+.eyebrow{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);font-weight:800}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(30px,4.2vw,44px);line-height:1.08;margin:4px 0 0;text-wrap:balance}
+h2{font-size:15.5px;font-weight:800;margin:0;display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:8px;height:8px;border-radius:50% 0 50% 0;background:var(--c,var(--leaf));flex:none}
+h3{font-family:var(--f-display);font-weight:400;font-size:24px;margin:0;line-height:1.15}
+.muted{color:var(--ink-3)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.latin{font-style:italic;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);padding:8px 15px;border-radius:999px;font-weight:700;font-size:14px;transition:transform .15s,box-shadow .15s}
+.btn:hover{border-color:var(--leaf);box-shadow:var(--shadow)}
+.btn.primary{background:linear-gradient(135deg,var(--leaf),var(--rail-b));border-color:transparent;color:#fff}
+.btn.primary:hover{transform:translateY(-1px)}
+.btn.primary:disabled{background:var(--leaf-soft);color:var(--leaf-ink);transform:none;box-shadow:none;cursor:default}
+.btn.ghost{border-color:transparent;background:none;box-shadow:none}
+.btn svg{width:16px;height:16px}
+.btn.sm{padding:6px 12px;font-size:13px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px;min-width:0;box-shadow:var(--shadow)}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.grid{display:grid;gap:20px}
+.g-dash{grid-template-columns:1.35fr 1fr}
+.g-2{grid-template-columns:1fr 1fr}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 11px;border-radius:999px;background:var(--c-soft,var(--sunk));font-size:12.5px;color:var(--c,var(--ink-2));font-weight:700;white-space:nowrap}
+.chip.leaf{background:var(--leaf-soft);color:var(--leaf-ink)}
+.chip.saf{background:var(--saffron-soft);color:var(--saffron)}
+.chip.lav{background:var(--lav-soft);color:var(--lav)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.input{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 13px}
+.input:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 3px var(--leaf-soft)}
+.search{position:relative;flex:1;min-width:200px}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-3)}
+.search .input{padding-left:38px;border-radius:999px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;align-self:flex-start;max-width:100%}
+.tabs button{border:0;background:none;padding:8px 15px;font-weight:700;color:var(--ink-3);border-radius:999px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:#fff;background:var(--leaf)}
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--leaf-ink);box-shadow:var(--shadow)}
+
+/* Accueil */
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:28px 30px;color:#fff;background:linear-gradient(120deg,var(--rail-a),var(--rail-b) 50%,var(--rail-c));display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:170px}
+.hero h1{color:#fff;max-width:18ch}
+.hero .eyebrow{color:rgba(255,255,255,.85)}
+.hero .btn{position:relative;z-index:1;background:#fff;color:var(--rail-a);border-color:transparent}
+.hero svg.deco{position:absolute;right:-10px;top:-14px;width:300px;height:220px;opacity:.95;pointer-events:none}
+.hero > div{position:relative;z-index:1}
+.today{display:flex;flex-direction:column;gap:8px}
+.slot{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--c-soft);}
+.slot .t{font-family:var(--f-mono);font-size:14px;color:var(--c);font-weight:500}
+.slot .t small{display:block;color:var(--ink-3);font-size:11.5px}
+.slot.now{box-shadow:inset 0 0 0 2px var(--c)}
+.slot b{font-weight:800}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kpi{padding:16px 18px;border-radius:18px;background:var(--c-soft);position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50% 0 50% 0;background:var(--c);opacity:.18;transform:rotate(20deg)}
+.kpi .v{font-family:var(--f-display);font-size:32px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--c)}
+.kpi .l{font-size:13px;color:var(--ink-2);font-weight:600}
+.list-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);align-items:center}
+.list-row:first-child{border-top:0}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--c-soft,var(--leaf-soft));color:var(--c,var(--leaf-ink));flex:none}
+
+/* Patients */
+.ptable{width:100%;border-collapse:collapse}
+.ptable th{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);text-align:left;font-weight:800;padding:8px 10px;border-bottom:1px solid var(--line)}
+.ptable td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.ptable tr:last-child td{border-bottom:0}
+.ptable tr.click{cursor:pointer}
+.ptable tr.click:hover td{background:var(--sunk)}
+.who{display:flex;gap:12px;align-items:center}
+.who b{display:block;font-weight:800}
+.who small{color:var(--ink-3)}
+.p-head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.p-head .avatar{width:60px;height:60px;font-size:19px}
+.back{border:0;background:none;color:var(--leaf);display:inline-flex;gap:6px;align-items:center;padding:0;font-weight:800;font-size:13px;align-self:flex-start}
+.back svg{width:15px;height:15px}
+.meters{display:grid;gap:16px}
+.meter .row{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.meter .bar{height:9px;background:var(--sunk);border-radius:6px;margin-top:6px;position:relative;overflow:hidden}
+.meter .bar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--leaf),var(--rail-b));border-radius:6px}
+.meter .bar i.w{background:linear-gradient(90deg,var(--sun),var(--saffron))}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;font-size:14.5px}
+.kv dt{color:var(--ink-3);font-weight:600}
+.kv dd{margin:0}
+.timeline{display:flex;flex-direction:column}
+.tl{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.tl:first-child{border-top:0}
+.rx{border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
+.rx-item{display:grid;grid-template-columns:1fr auto;gap:10px;padding:14px 20px;border-top:1px dashed var(--line);border-left:4px solid var(--c,var(--leaf))}
+.rx-item:first-of-type{border-top:0}
+.rx-head{padding:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:linear-gradient(120deg,var(--leaf-soft),var(--lav-soft))}
+.icon-btn{border:0;background:none;color:var(--ink-3);padding:6px;border-radius:8px}
+.icon-btn:hover{background:var(--bad-soft);color:var(--bad)}
+.icon-btn svg{width:16px;height:16px;display:block}
+
+/* Répertorisation */
+.rep{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
+.symgroup{border-top:1px solid var(--line);padding:10px 0}
+.symgroup:first-child{border-top:0;padding-top:0}
+.symgroup h4{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--c,var(--ink-3));font-weight:800}
+.sym{display:flex;align-items:center;gap:10px;padding:5px 8px;border-radius:10px;cursor:pointer;font-size:14px}
+.sym:hover{background:var(--sunk)}
+.sym:has(input:checked){background:var(--leaf-soft);color:var(--leaf-ink);font-weight:700}
+.sym input{accent-color:var(--leaf);width:16px;height:16px;margin:0}
+.scroll-x{overflow-x:auto;min-width:0}
+.rgrid{border-collapse:separate;border-spacing:0;font-size:13.5px;min-width:100%}
+.rgrid th,.rgrid td{padding:0;border-bottom:1px solid var(--line)}
+.rgrid thead th{vertical-align:bottom;height:150px;position:relative;width:34px;min-width:34px}
+.rgrid thead th > div{position:absolute;bottom:10px;left:50%;transform-origin:left bottom;transform:translateX(4px) rotate(-60deg);white-space:nowrap;font-weight:600;font-size:12px;color:var(--ink-2)}
+.rgrid thead th.rem{width:auto;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);padding:0 10px 10px 0}
+.rgrid thead th.sc{width:120px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);padding:0 0 10px 10px}
+.rgrid td.rem{padding:10px 12px 10px 0;min-width:190px}
+.rgrid td.rem b{font-weight:800;display:block}
+.rgrid td.rem small{font-size:12px}
+.rgrid td.dot{text-align:center}
+.d{display:inline-block;border-radius:50%;background:var(--c,var(--leaf))}
+.d1{width:7px;height:7px;opacity:.45}.d2{width:11px;height:11px;opacity:.75}.d3{width:15px;height:15px}
+.rgrid td.sc{padding:10px 0 10px 10px}
+.score{display:flex;align-items:center;gap:8px}
+.score .bar{flex:1;height:8px;border-radius:6px;background:var(--sunk);overflow:hidden;min-width:50px}
+.score .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sun),var(--saffron))}
+.rgrid tr.rrow{cursor:pointer}
+.rgrid tr.rrow:hover td{background:var(--sunk)}
+.empty{padding:36px 18px;text-align:center;color:var(--ink-3)}
+.empty h3{color:var(--ink);margin-bottom:6px}
+
+/* Remèdes */
+.mm{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:20px;align-items:start}
+.mlist{display:flex;flex-direction:column;gap:2px;max-height:70vh;overflow:auto}
+.mitem{display:flex;gap:12px;align-items:center;padding:9px 12px;border:0;background:none;text-align:left;border-radius:14px;width:100%}
+.mitem:hover{background:var(--sunk)}
+.mitem[aria-current="true"]{background:var(--c-soft)}
+.mitem b{display:block;font-weight:800;font-size:14.5px}
+.mitem small{font-size:12.5px}
+.glyph{width:36px;height:36px;border-radius:50% 12px 50% 12px;display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:500;flex:none;background:var(--c-soft);color:var(--c)}
+.plate{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.plate-top{display:grid;grid-template-columns:150px 1fr;gap:22px;padding:26px;align-items:center;background:radial-gradient(22rem 14rem at 0% 0%,var(--c-soft),transparent 75%),linear-gradient(180deg,var(--c-soft),var(--surface))}
+.plate-top canvas{width:150px;height:150px;max-width:100%;background:var(--surface);border-radius:50%;box-shadow:inset 0 0 0 6px var(--c-soft)}
+.plate-top .eyebrow{color:var(--c)}
+.plate-name{font-family:var(--f-display);font-size:clamp(28px,3.5vw,40px);line-height:1.05;margin:4px 0}
+.plate-body{padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.sec h4{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--c,var(--ink-3));font-weight:800}
+.sec p{margin:0;max-width:62ch}
+.caution{border-left:4px solid var(--warn);background:var(--warn-soft);padding:10px 14px;border-radius:0 12px 12px 0;font-size:14px}
+
+/* Terrain */
+.qrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.qrow:first-of-type{border-top:0}
+.diath{display:flex;flex-direction:column;gap:14px}
+.dbar .row{display:flex;justify-content:space-between;gap:8px;font-size:14px;align-items:baseline}
+.dbar .bar{height:12px;background:var(--sunk);border-radius:8px;margin-top:6px;overflow:hidden}
+.dbar .bar i{display:block;height:100%;background:var(--c,var(--ink-3));opacity:.55;border-radius:8px;transition:width .35s ease}
+.dbar.top .bar i{opacity:1}
+
+/* Agenda */
+.week{display:grid;grid-template-columns:52px repeat(6,minmax(120px,1fr));min-width:780px}
+.week .hcell{padding:12px 8px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}
+.week .hcell b{font-family:var(--f-display);font-weight:400;font-size:24px;display:block;line-height:1}
+.week .hcell.today b{color:var(--leaf)}
+.week .hours div{height:52px;font-family:var(--f-mono);font-size:11px;color:var(--ink-3);text-align:right;padding-right:8px;transform:translateY(-7px)}
+.week .col{position:relative;border-left:1px solid var(--line);background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 52px}
+.week .col.today{background-color:color-mix(in srgb,var(--leaf-soft) 55%,transparent)}
+.appt{position:absolute;left:4px;right:4px;border-radius:12px;padding:6px 9px;font-size:12.5px;line-height:1.3;background:var(--leaf-soft);border:0;border-left:4px solid var(--leaf);overflow:hidden;cursor:pointer;text-align:left;color:var(--ink)}
+.appt.bilan{background:var(--saffron-soft);border-left-color:var(--saffron)}
+.appt b{display:block;font-weight:800}
+.nowline{position:absolute;left:0;right:0;height:0;border-top:2px solid var(--rose);z-index:2}
+.nowline::before{content:"";position:absolute;left:-4px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--rose)}
+
+/* Gestion */
+.inv-status{font-size:12px}
+.tot{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;gap:12px}
+.tot.big{font-family:var(--f-display);font-size:24px;border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+.invoice-sheet{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.invoice-sheet::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:linear-gradient(90deg,var(--leaf),var(--lav),var(--saffron))}
+.invoice-sheet table{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px}
+.invoice-sheet th{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);font-weight:800}
+.invoice-sheet td{padding:10px 8px;border-bottom:1px solid var(--line)}
+.qrbill{display:grid;grid-template-columns:auto 1fr;gap:20px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--ink-3)}
+.qr-l{display:flex;flex-direction:column;gap:8px}
+.qr-l svg{border-radius:8px}
+.qr-r{display:grid;gap:2px;margin:0;font-size:13.5px;align-content:start}
+.qr-r dt{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:800;margin-top:8px}
+.qr-r dt:first-child{margin-top:0}
+.qr-r dd{margin:0}
+@media (max-width:520px){.qrbill{grid-template-columns:1fr}}
+.t590{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 16px;margin:16px 0 0;padding:12px 14px;background:var(--leaf-soft);border-radius:14px;font-size:13.5px}
+.t590 dt{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--leaf-ink);font-weight:800;opacity:.8}
+.t590 dd{margin:0;overflow-wrap:anywhere;font-weight:600}
+@media (max-width:520px){.t590{grid-template-columns:1fr 1fr}}
+.pending{border-color:var(--saffron);background:linear-gradient(160deg,var(--saffron-soft),var(--surface) 70%)}
+.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Modal + toast */
+.scrim{position:fixed;inset:0;background:rgba(15,30,22,.45);backdrop-filter:blur(3px);display:grid;place-items:center;z-index:50;padding:16px}
+.modal{background:var(--surface);border-radius:24px;width:min(540px,100%);max-height:90vh;overflow:auto;padding:24px;box-shadow:var(--shadow)}
+.form{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.form label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:700;color:var(--ink-2)}
+.form .full{grid-column:1/-1}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--rail-a);color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;z-index:60;box-shadow:var(--shadow)}
+.note{font-size:12.5px;color:var(--ink-3)}
+.auth{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:16px;background:linear-gradient(150deg,var(--rail-a),var(--rail-b) 55%,var(--rail-c))}
+.auth-card{width:min(420px,100%);background:var(--surface);border-radius:26px;padding:28px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:14px}
+.auth-brand{padding:0;color:var(--ink)}
+.auth-brand small{color:var(--ink-3);opacity:1}
+.auth-links{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.auth-links button,.linkbtn{border:0;background:none;padding:0;color:var(--leaf);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.rail .linkbtn{color:inherit}
+.sync{font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:999px;align-self:flex-start;background:rgba(255,255,255,.16)}
+.sync.off{display:none}
+.sync.err{background:var(--bad);color:#fff}
+body.loading main{opacity:.4;pointer-events:none}
+.modal.wide{width:min(680px,100%)}
+.fsec{margin:6px 0 -2px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--leaf);font-weight:800}
+.form-err{margin:0;padding:10px 12px;border-radius:12px;background:var(--bad-soft);color:var(--bad);font-size:13.5px;font-weight:600}
+.ind-list{display:flex;flex-direction:column;gap:8px}
+.ind-row{display:grid;grid-template-columns:1fr 120px auto;gap:8px;align-items:center}
+.ind-new{display:flex;gap:8px;margin-top:8px}
+.btn.danger{color:var(--bad)}
+.btn.danger.armed{background:var(--bad);color:#fff}
+@media (max-width:520px){.ind-row{grid-template-columns:1fr 96px auto}}
+
+.tabbar{display:none}
+@media (max-width:980px){
+  .g-dash,.g-2,.rep,.mm{grid-template-columns:1fr}
+  .mlist{max-height:none}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .rail{display:none}
+  main{padding-block:18px calc(96px + env(safe-area-inset-bottom,0px));padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+  .tabbar{display:grid;grid-template-columns:repeat(7,1fr);position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -8px 24px -16px rgba(46,107,74,.4);padding:6px max(6px, env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px, env(safe-area-inset-left,0px))}
+  .tabbar button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:800;color:var(--ink-3);padding:6px 0;border-radius:12px;min-width:0}
+  .tabbar button svg{width:21px;height:21px}
+  .tabbar button[aria-current="page"]{color:var(--leaf);background:var(--leaf-soft)}
+  .mob-brand{display:flex}
+  .hero{padding:22px 20px;min-height:0}
+  .hero svg.deco{width:200px;height:150px;opacity:.6}
+  .plate-top{grid-template-columns:96px 1fr;padding:18px;gap:14px}
+  .plate-top canvas{width:96px;height:96px}
+  .plate-body{grid-template-columns:1fr;padding:18px}
+  .kpis{gap:8px}
+  .kpi{padding:12px}
+  .kpi .v{font-size:23px}
+  .kpi .l{font-size:11.5px}
+  .kv{grid-template-columns:1fr}
+  .kv dt{margin-top:6px}
+  .ptable .hide-m{display:none}
+  .form{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:4px}
+  .panel{padding:16px}
+}
+.mob-brand{display:none;align-items:center;justify-content:space-between}
+.mob-brand b{font-family:var(--f-display);font-weight:400;font-size:25px;color:var(--leaf-ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<div class="app">
+  <aside class="rail" aria-label="Navigation">
+    <div class="brand"><svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 30V14" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M16 19c-6 0-10-4-10-11 6 0 10 4 10 11Z" fill="#BFE8CC"/><path d="M16 15c5 0 9-3 9-9-5 0-9 3-9 9Z" fill="#FFD27A"/><circle cx="16" cy="9" r="2.6" fill="#F6A6C0"/></svg><div><b>Torella</b><small>Soins naturels · Raffaella Torello</small></div></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="foot">
+      <div class="ctx" id="ctx"></div><span id="syncchip" class="sync off"></span>
+      <span id="modenote">Données d'exemple, stockées dans ce navigateur.</span>
+    </div>
+  </aside>
+  <main><div class="wrap" id="view"></div></main>
+</div>
+<nav class="tabbar" id="tabbar" aria-label="Navigation"></nav>
+<div id="layer"></div>
+<div id="auth" class="auth" hidden></div>
+
+<script>window.TORELLA_CONFIG={url:"https://nhuulqgvkxbomielvskq.supabase.co",key:"sb_publishable_odL0ZW1zX6nU6S3sFlbxaw_wCcChIvD"};</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+const CFG=window.TORELLA_CONFIG||null;
+const CLOUD=!!(CFG&&window.supabase&&window.supabase.createClient);
+const sb=CLOUD?window.supabase.createClient(CFG.url,CFG.key,{auth:{persistSession:true,autoRefreshToken:true}}):null;
+/* ---------- Icônes ---------- */
+const I={
+ home:'<path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c2 .7 3.2 2.4 3.5 5.2"/>',
+ grid:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/><circle cx="14" cy="14" r="1.6"/><circle cx="17.5" cy="17.5" r="1"/>',
+ leaf:'<path d="M5 19c0-9 5-14 15-14 0 10-5 15-14 15"/><path d="M5 19 13 11"/>',
+ compass:'<circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><path d="m9 15 2-5 4-1-2 5z"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+ doc:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>',
+ search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ back:'<path d="M15 5 8 12l7 7"/>',
+ x:'<path d="M6 6l12 12M18 6 6 18"/>',
+ copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+ arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ check:'<path d="m5 12 5 5 9-10"/>'
+};
+const ic=(n)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
+
+/* ---------- Référentiel : symptômes ---------- */
+const SYMPTOMS=[
+ ['Sommeil',[['insomnie','Difficulté d\'endormissement'],['reveils','Réveils nocturnes (1 h – 3 h)'],['ruminations','Ruminations mentales']]],
+ ['Stress et émotions',[['anxiete','Anxiété, nervosité'],['irritabilite','Irritabilité'],['stress','Stress chronique'],['concentration','Difficultés de concentration']]],
+ ['Énergie',[['fatigue','Fatigue persistante'],['crampes','Crampes, tressautements'],['froid','Extrémités froides']]],
+ ['Digestion',[['ballonnements','Ballonnements'],['lenteur','Digestion lente, lourdeurs'],['foie','Surcharge hépatique'],['spasmes','Spasmes digestifs'],['nausees','Nausées']]],
+ ['Peau',[['acne','Acné'],['eczema','Eczéma, peau sèche'],['grasse','Peau grasse']]],
+ ['Circulation',[['jambes','Jambes lourdes'],['retention','Rétention d\'eau']]],
+ ['Immunité et ORL',[['infections','Infections à répétition'],['orl','Rhume, sinus encombrés'],['allergies','Allergies saisonnières']]],
+ ['Douleurs',[['articulaires','Douleurs articulaires'],['raideur','Raideur matinale'],['cephalees','Céphalées de tension']]],
+ ['Cycle féminin',[['spm','Syndrome prémenstruel'],['cycles','Cycles irréguliers']]]
+];
+const SYM={};SYMPTOMS.forEach(([g,l])=>l.forEach(([id,n])=>SYM[id]={id,n,g}));
+
+/* ---------- Référentiel : matière médicale ---------- */
+const CATS={phyto:['Phytothérapie','PH'],aroma:['Aromathérapie','HE'],gemmo:['Gemmothérapie','BG'],oligo:['Oligothérapie','OE'],bach:['Fleurs de Bach','FB'],autre:['Autres soins','AU']};
+const R=(id,nom,latin,cat,props,sym,part,poso,prec,tradi)=>({id,nom,latin,cat,props,sym,part,poso,prec,tradi});
+const REMEDIES=[
+ R('valeriane','Valériane','Valeriana officinalis','phyto',['Sédative','Anxiolytique douce'],{insomnie:3,anxiete:2,reveils:2},'Racine','Extrait sec : 300 à 600 mg le soir, 30 min avant le coucher. Cure de 3 à 4 semaines.','Somnolence possible. Pas d\'association avec l\'alcool ni les sédatifs.','Plante de l\'endormissement difficile chez la personne tendue, au mental agité le soir.'),
+ R('passiflore','Passiflore','Passiflora incarnata','phyto',['Anxiolytique','Sédative'],{anxiete:3,insomnie:2,irritabilite:2},'Parties aériennes','Infusion : 1 c. à café pour 150 ml, 2 à 3 tasses par jour. Ou extrait fluide.','Somnolence possible en association avec d\'autres sédatifs.','Indiquée dans la nervosité avec palpitations et l\'agitation qui empêche de « décrocher ».'),
+ R('melisse','Mélisse','Melissa officinalis','phyto',['Antispasmodique','Calmante','Digestive'],{spasmes:3,ballonnements:2,anxiete:2,lenteur:2},'Feuilles','Infusion après les repas, 2 à 3 tasses par jour.','Prudence en cas d\'hypothyroïdie traitée.','Le lien entre ventre et émotions : spasmes digestifs d\'origine nerveuse.'),
+ R('artichaut','Artichaut','Cynara scolymus','phyto',['Cholérétique','Hépatoprotectrice'],{lenteur:3,foie:3,ballonnements:1},'Feuilles','Extrait sec : 2 gélules avant les deux principaux repas, cure de 3 semaines.','Contre-indiqué en cas d\'obstruction des voies biliaires.','Drainage hépatobiliaire classique des cures de saison.'),
+ R('desmodium','Desmodium','Desmodium adscendens','phyto',['Hépatoprotecteur'],{foie:3},'Feuilles et tiges','Décoction ou extrait fluide, cure de 3 semaines.','Peu de données chez la femme enceinte : s\'abstenir.','Soutien hépatique réputé dans les périodes de surcharge.'),
+ R('rhodiola','Rhodiola','Rhodiola rosea','phyto',['Adaptogène','Tonique'],{fatigue:3,stress:3,concentration:2},'Racine','200 à 400 mg le matin et à midi, jamais le soir.','Déconseillée en cas de trouble bipolaire. Peut gêner le sommeil si prise tard.','Adaptogène des périodes de surmenage intellectuel et de stress prolongé.'),
+ R('ginkgo','Ginkgo','Ginkgo biloba','phyto',['Vasculotrope','Neuroprotecteur'],{froid:3,jambes:2,concentration:2},'Feuilles','Extrait standardisé : 120 à 240 mg par jour en 2 prises.','Interaction avec les anticoagulants et antiagrégants. Arrêt avant chirurgie.','Microcirculation : mains et pieds froids, mémoire qui flanche.'),
+ R('vigne','Vigne rouge','Vitis vinifera','phyto',['Veinotonique'],{jambes:3,retention:1},'Feuilles','Extrait sec : 2 gélules par jour, cure de 3 mois à l\'approche de l\'été.','Aucune connue aux doses usuelles.','Lourdeurs de jambes aggravées par la chaleur et la station debout.'),
+ R('echinacee','Échinacée','Echinacea purpurea','phyto',['Immunostimulante'],{infections:3,orl:2},'Parties aériennes et racine','En cure courte de 10 jours dès les premiers signes, ou en prévention 3 semaines sur 4.','Déconseillée en cas de maladie auto-immune. Allergie aux Astéracées.','Renfort de l\'immunité de terrain chez les sujets qui « attrapent tout ».'),
+ R('harpago','Harpagophyton','Harpagophytum procumbens','phyto',['Anti-inflammatoire'],{articulaires:3,raideur:2},'Racine secondaire','Extrait sec : 2 gélules matin et soir, au moins 4 semaines.','Contre-indiqué en cas d\'ulcère gastroduodénal et de calculs biliaires.','Douleurs articulaires mécaniques, raideurs du matin.'),
+ R('gattilier','Gattilier','Vitex agnus-castus','phyto',['Régulateur hormonal'],{spm:3,cycles:2},'Fruits','Extrait sec : 1 prise le matin, cure de 3 cycles minimum.','Déconseillé pendant la grossesse et en cas de contraception hormonale.','Tensions mammaires et humeur instable avant les règles.'),
+ R('bardane','Bardane','Arctium lappa','phyto',['Dépurative','Émonctoire cutané'],{acne:3,grasse:2,eczema:1},'Racine','Décoction ou extrait sec, cure de 3 semaines.','Allergie aux Astéracées.','Draineur de la peau, à associer à un travail sur l\'alimentation.'),
+ R('pensee','Pensée sauvage','Viola tricolor','phyto',['Dépurative','Apaisante cutanée'],{eczema:2,acne:2},'Parties aériennes','Infusion : 2 à 3 tasses par jour, ou en compresses locales.','Aucune connue aux doses usuelles.','Peaux réactives, croûtes et démangeaisons.'),
+ R('lavande','Lavande vraie','Lavandula angustifolia','aroma',['Calmante','Antispasmodique','Cicatrisante'],{anxiete:2,insomnie:2,irritabilite:2,eczema:1},'Sommités fleuries · huile essentielle','2 gouttes dans 10 gouttes d\'huile végétale, en massage du plexus solaire ou des poignets.','Diluer avant application. Test au pli du coude.','L\'huile essentielle de base de la trousse anti-stress.'),
+ R('menthe','Menthe poivrée','Mentha × piperita','aroma',['Antinauséeuse','Antalgique locale'],{nausees:3,cephalees:3,lenteur:1},'Parties aériennes · huile essentielle','1 goutte diluée sur les tempes, ou 1 goutte sur un comprimé neutre pour la nausée.','Ni avant 6 ans, ni pendant la grossesse et l\'allaitement. Jamais en diffusion. Éviter près des yeux.','Effet frais immédiat sur les céphalées de tension.'),
+ R('ravintsara','Ravintsara','Cinnamomum camphora ct cinéole','aroma',['Antivirale','Immunostimulante'],{orl:3,infections:2,fatigue:1},'Feuilles · huile essentielle','3 gouttes diluées en friction sur le thorax et le haut du dos, 3 fois par jour.','Prudence chez l\'asthmatique. Pas avant 3 ans.','Huile essentielle de l\'hiver et des débuts de rhume.'),
+ R('teatree','Arbre à thé','Melaleuca alternifolia','aroma',['Anti-infectieuse','Purifiante'],{acne:3,orl:1},'Feuilles · huile essentielle','1 goutte pure sur un bouton, à l\'aide d\'un coton-tige.','Peut irriter les peaux sensibles.','Le soin local des imperfections.'),
+ R('gaultherie','Gaulthérie couchée','Gaultheria procumbens','aroma',['Anti-inflammatoire locale'],{articulaires:3,raideur:2},'Feuilles · huile essentielle','Diluée à 20 % dans une huile végétale, massage local 3 fois par jour.','Contre-indiquée en cas d\'allergie à l\'aspirine et sous anticoagulants.','Massage des articulations et muscles douloureux.'),
+ R('cassis','Cassis','Ribes nigrum','gemmo',['Anti-inflammatoire','Tonique surrénalien'],{allergies:3,fatigue:2,articulaires:2},'Bourgeons · macérat','5 à 15 gouttes le matin dans un peu d\'eau, cure de 3 semaines.','Déconseillé en cas d\'hypertension non suivie.','Le « polychreste » de la gemmothérapie : allergies, fatigue, inflammations.'),
+ R('tilleul','Tilleul argenté','Tilia tomentosa','gemmo',['Sédatif','Antispasmodique'],{insomnie:2,anxiete:2,irritabilite:1},'Bourgeons · macérat','5 à 15 gouttes le soir.','Aucune connue aux doses usuelles.','Endormissement difficile, nervosité de fin de journée.'),
+ R('figuier','Figuier','Ficus carica','gemmo',['Régulateur de l\'axe intestin-cerveau'],{stress:2,spasmes:2,ballonnements:1},'Bourgeons · macérat','5 à 15 gouttes avant le repas de midi.','Aucune connue aux doses usuelles.','Stress qui « se loge au ventre ».'),
+ R('romarin','Romarin','Rosmarinus officinalis','gemmo',['Draineur hépatique'],{foie:2,lenteur:1},'Jeunes pousses · macérat','5 à 15 gouttes le matin.','Prudence en cas d\'obstruction biliaire.','Drainage hépatique doux, en début de cure.'),
+ R('magnesium','Magnésium','Mg','oligo',['Régulateur neuromusculaire'],{crampes:3,fatigue:2,stress:2,irritabilite:1,spm:1},'Citrate ou bisglycinate','300 mg par jour en 2 prises, au repas.','Diminuer la dose si selles molles. Insuffisance rénale : avis médical.','Le minéral du stress : il se vide quand on est tendu.'),
+ R('zinc','Zinc','Zn','oligo',['Immunité','Peau'],{acne:2,infections:2},'Bisglycinate','15 mg par jour, à distance des repas riches en fer.','Ne pas dépasser 25 mg par jour sur la durée.','Peau, immunité, cicatrisation.'),
+ R('mncu','Manganèse – Cuivre','Mn-Cu','oligo',['Diathèse II hyposthénique'],{infections:2,fatigue:2},'Ampoules','1 ampoule le matin à jeun, 6 jours sur 7.','Aucune connue aux doses usuelles.','Catalyseur du sujet qui se fatigue vite et s\'enrhume souvent.'),
+ R('whitechestnut','Marronnier blanc','White Chestnut','bach',['Mental en boucle'],{ruminations:3,reveils:2,insomnie:1},'Élixir floral','4 gouttes 4 fois par jour, dont une au coucher.','Aucune.','Pour les pensées qui tournent en rond, surtout la nuit.'),
+ R('impatiens','Impatiente','Impatiens','bach',['Impatience'],{irritabilite:3,stress:1},'Élixir floral','4 gouttes 4 fois par jour.','Aucune.','Pour la personne pressée qui s\'agace de la lenteur des autres.'),
+ R('mimulus','Mimule','Mimulus','bach',['Peurs identifiées'],{anxiete:2},'Élixir floral','4 gouttes 4 fois par jour.','Aucune.','Peurs nommables : examens, parler en public, maladie.'),
+ R('olive','Olivier','Olive','bach',['Épuisement'],{fatigue:2},'Élixir floral','4 gouttes 4 fois par jour.','Aucune.','Après un effort prolongé, quand il ne reste plus de réserves.')
+];
+const REM={};REMEDIES.forEach(r=>REM[r.id]=r);
+const REMEDIES_BUILTIN=JSON.parse(JSON.stringify(REMEDIES));
+
+/* ---------- Diathèses de Ménétrier ---------- */
+const DIATH=[
+ {id:'I',nom:'Allergique',oligo:'Manganèse (Mn)',q:['Fatigué le matin, mieux en fin de journée','Allergies, eczéma ou migraines','Optimiste mais vite irritable']},
+ {id:'II',nom:'Hyposthénique',oligo:'Manganèse – Cuivre (Mn-Cu)',q:['Fatigue rapide, récupère au repos','Infections ORL à répétition','Tendance au pessimisme, gros besoin de sommeil']},
+ {id:'III',nom:'Dystonique',oligo:'Manganèse – Cobalt (Mn-Co)',q:['Fatigue en fin de journée','Troubles digestifs et circulatoires','Anxiété, ruminations, oppression']},
+ {id:'IV',nom:'Anergique',oligo:'Cuivre – Or – Argent (Cu-Au-Ag)',q:['Épuisement profond et permanent','Infections longues ou chroniques','Perte d\'élan, désintérêt marqué']},
+ {id:'V',nom:'Désadaptation',oligo:'Zinc – Cuivre / Zinc – Nickel – Cobalt',q:['Troubles des cycles ou de la glycémie','Fringales de sucre après le repas','Énergie très variable d\'un jour à l\'autre']}
+];
+
+/* ---------- Données d'exemple du cabinet ---------- */
+const TODAY=new Date();TODAY.setHours(12,0,0,0);
+const TODAY_ISO=TODAY.getFullYear()+'-'+String(TODAY.getMonth()+1).padStart(2,'0')+'-'+String(TODAY.getDate()).padStart(2,'0');
+const SEED={
+ patients:[
+  {id:'p1',prenom:'Léa',nom:'Fontaine',age:34,ville:'Genève',metier:'Graphiste',tel:'079 412 36 58',motif:'Fatigue, sommeil non réparateur, ventre gonflé en fin de journée.',terrain:'III',sym:['insomnie','ruminations','fatigue','ballonnements','stress'],hv:{sommeil:6,eau:1,sport:1,cafe:3},antecedents:'Appendicectomie (2009). Pas de traitement en cours.',alimentation:'Petit-déjeuner sucré, déjeuner pris devant l\'écran, grignotage vers 17 h.',programme:[{r:'whitechestnut',note:''},{r:'magnesium',note:''},{r:'figuier',note:'Avant le déjeuner'}],seances:[{d:'2026-09-12',type:'Bilan de vitalité',note:'Terrain dystonique. Mental très actif le soir, réveils vers 2 h. Proposé : routine de coucher sans écran, magnésium, Marronnier blanc.'},{d:'2026-10-10',type:'Suivi',note:'Endormissement meilleur (20 min au lieu de 60). Ballonnements toujours présents : ajout du bourgeon de figuier, mastication.'}]},
+  {id:'p2',prenom:'Marc',nom:'Bühler',age:52,ville:'Carouge',metier:'Enseignant',tel:'078 205 11 90',motif:'Genoux douloureux le matin, digestion lourde après les repas.',terrain:'I',sym:['articulaires','raideur','lenteur','foie'],hv:{sommeil:7,eau:1.2,sport:0,cafe:2},antecedents:'Entorse genou droit (2018).',alimentation:'Repas copieux le soir, vin 4 soirs par semaine.',programme:[{r:'harpago',note:''},{r:'artichaut',note:''}],seances:[{d:'2026-09-28',type:'Bilan de vitalité',note:'Surcharge digestive et articulaire. Allègement du repas du soir, marche 30 min par jour.'},{d:'2026-10-19',type:'Suivi',note:'Raideur matinale réduite. Poursuite 3 semaines.'}]},
+  {id:'p3',prenom:'Inès',nom:'Moreau',age:27,ville:'Lausanne',metier:'Étudiante en master',tel:'076 588 02 47',motif:'Acné du menton qui revient avant les règles, humeur à fleur de peau.',terrain:'V',sym:['acne','spm','grasse','irritabilite'],hv:{sommeil:7.5,eau:1.5,sport:2,cafe:1},antecedents:'Aucun.',alimentation:'Beaucoup de produits laitiers, sucre en période d\'examens.',programme:[{r:'gattilier',note:''},{r:'bardane',note:''},{r:'teatree',note:'Local uniquement'}],seances:[{d:'2026-10-20',type:'Bilan de vitalité',note:'Lien net avec le cycle. Réduction des laitages sur 6 semaines, gattilier sur 3 cycles.'}]},
+  {id:'p4',prenom:'Samuel',nom:'Ochs',age:41,ville:'Nyon',metier:'Développeur',tel:'079 330 74 12',motif:'Jambes lourdes, mains froides, difficulté à se concentrer l\'après-midi.',terrain:'III',sym:['jambes','froid','concentration','fatigue'],hv:{sommeil:6.5,eau:0.8,sport:1,cafe:4},antecedents:'Varices chez la mère.',alimentation:'Peu de légumes, déjeuner rapide.',programme:[{r:'vigne',note:''},{r:'ginkgo',note:''}],seances:[{d:'2026-09-05',type:'Bilan de vitalité',note:'Sédentarité, 9 h assis par jour. Pauses actives toutes les heures, douches froides des jambes.'}]},
+  {id:'p5',prenom:'Chloé',nom:'Rinaldi',age:63,ville:'Genève',metier:'Retraitée',tel:'022 734 58 10',motif:'Réveils nocturnes, crampes dans les mollets.',terrain:'II',sym:['reveils','crampes','articulaires'],hv:{sommeil:5.5,eau:1,sport:2,cafe:1},antecedents:'Ostéopénie suivie par son médecin.',alimentation:'Équilibrée, dîne tôt.',programme:[{r:'magnesium',note:''}],seances:[{d:'2026-10-02',type:'Bilan de vitalité',note:'Crampes nocturnes, apport en magnésium faible. Avis médical recommandé pour le suivi osseux.'}]}
+ ],
+ appts:[
+  {d:'2026-10-19',h:9,m:0,dur:60,p:'p2',type:'Suivi'},
+  {d:'2026-10-20',h:10,m:30,dur:90,p:'p3',type:'Bilan'},
+  {d:'2026-10-21',h:14,m:0,dur:60,p:'p4',type:'Suivi'},
+  {d:'2026-10-22',h:16,m:0,dur:60,p:'p5',type:'Suivi'},
+  {d:'2026-10-23',h:9,m:30,dur:60,p:'p4',type:'Suivi'},
+  {d:'2026-10-23',h:14,m:0,dur:60,p:'p1',type:'Suivi'},
+  {d:'2026-10-23',h:17,m:0,dur:90,p:null,nom:'Nadia Keller',type:'Bilan'},
+  {d:'2026-10-24',h:10,m:0,dur:60,p:'p5',type:'Suivi'}
+ ],
+ invoices:[
+  {no:'2026-0148',p:'p3',d:'2026-10-20',lignes:[['B01','Anamnèse et bilan de vitalité',12],['C02','Conseil en hygiène de vie',4],['R01','Rédaction du programme (hors séance)',3]],status:'envoyee'},
+  {no:'2026-0147',p:'p2',d:'2026-10-19',lignes:[['S01','Séance de suivi',12]],status:'payee'},
+  {no:'2026-0146',p:'p1',d:'2026-10-10',lignes:[['S01','Séance de suivi',12]],status:'payee'},
+  {no:'2026-0145',p:'p5',d:'2026-10-02',lignes:[['B01','Anamnèse et bilan de vitalité',14],['R01','Rédaction du programme (hors séance)',3]],status:'retard'},
+  {no:'2026-0144',p:'p2',d:'2026-09-28',lignes:[['B01','Anamnèse et bilan de vitalité',14],['C02','Conseil en hygiène de vie',4]],status:'payee'},
+  {no:'2026-0143',p:'p1',d:'2026-09-12',lignes:[['B01','Anamnèse et bilan de vitalité',16],['R01','Rédaction du programme (hors séance)',3]],status:'payee'},
+  {no:'D-2026-012',type:'devis',p:'p4',d:'2026-10-21',lignes:[['S01','Séance de suivi (forfait 3 séances)',36],['RP1','Réflexologie plantaire',9]],status:'ouvert'},
+  {no:'D-2026-011',type:'devis',p:'p3',d:'2026-10-20',lignes:[['RP1','Réflexologie plantaire',9]],status:'accepte'},
+  {no:'AV-2026-003',type:'avoir',p:'p2',d:'2026-10-05',ref:'2026-0144',lignes:[['C02','Conseil en hygiène de vie (séance écourtée)',2]],status:'payee'}
+ ],
+ pay:{'2026-0147':['TWINT','2026-10-19'],'2026-0146':['Carte','2026-10-10'],'2026-0144':['Virement','2026-10-03'],'2026-0143':['Espèces','2026-09-12'],'AV-2026-003':['Virement','2026-10-05']},
+ depenses:[
+  {d:'2026-10-01',lib:'Loyer du cabinet (octobre)',cat:'Locaux',four:'Régie du Rhône',m:950},
+  {d:'2026-10-06',lib:'Commande macérats et huiles essentielles',cat:'Produits',four:'Herboristerie (fournisseur)',m:286.4},
+  {d:'2026-10-14',lib:'Formation continue : micronutrition',cat:'Formation',four:'École de naturopathie',m:420},
+  {d:'2026-10-15',lib:'Abonnement téléphone et internet',cat:'Frais généraux',four:'Opérateur',m:69.9},
+  {d:'2026-09-01',lib:'Loyer du cabinet (septembre)',cat:'Locaux',four:'Régie du Rhône',m:950},
+  {d:'2026-09-08',lib:'Assurance RC professionnelle (trimestre)',cat:'Assurances',four:'Assureur',m:184},
+  {d:'2026-09-20',lib:'Huile de massage, draps jetables',cat:'Produits',four:'Fournisseur cabinet',m:112.5}
+ ]
+};
+SEED.appts.forEach((a,i)=>a.id='a'+(i+1));SEED.depenses.forEach((x,i)=>x.id='e'+(i+1));
+SEED.invoices.forEach(i=>{i.type=i.type||'facture';const pp=SEED.pay[i.no];if(pp)i.paiement={mode:pp[0],d:pp[1]}});
+/* ---------- Tarif 590 : catalogue de positions (amorce, remplacée par la base partagée) ---------- */
+const CODES_FALLBACK={version:'2026 · amorce à valider',codes:[
+ ['1200','Anamnèse, examen, diagnostic, bilan','temps'],
+ ['1085','Phytothérapie (y c. spagyrie)','temps'],
+ ['1010','Aromathérapie','temps'],
+ ['1022','Thérapie par les fleurs de Bach','temps'],
+ ['1206','Thérapie nutritionnelle','temps'],
+ ['1212','Thérapie d\'ordre (hygiène de vie)','temps'],
+ ['1082','Thérapie orthomoléculaire','temps'],
+ ['1052','Massage des zones réflexes du pied','temps'],
+ ['1134','Réflexothérapie','temps'],
+ ['1062','Massage classique','temps'],
+ ['1066','Drainage lymphatique manuel','temps'],
+ ['1060','Kinésiologie','temps'],
+ ['1121','Compresses, enveloppements, fango','temps'],
+ ['1205','Méthodes de dérivation (ventouses, gua sha…)','temps'],
+ ['1057','Homéopathie, traitement et consultation','temps'],
+ ['1127','Homéopathie, répertorisation','temps'],
+ ['1257','Coordination avec d\'autres professionnels','temps'],
+ ['1250','Consultation manquée','forfait'],
+ ['1253','Rapport formalisé','forfait'],
+ ['1254','Rapport non formalisé','forfait'],
+ ['1255','Matériel','forfait'],
+ ['1256','Indemnité de déplacement','forfait'],
+ ['1310','Remèdes de médecine complémentaire','forfait']
+].map(([pos,lib,mode])=>({pos,lib,mode}))};
+let TARIF590=CODES_FALLBACK; let PENDING=null; let DBSRC=false; let CANEDIT=false;
+const codeLib=pos=>(TARIF590.codes.find(c=>c.pos===pos)||{}).lib;
+const LEGACY={B01:'1200',S01:'1085',C02:'1212',R01:'1254',RP1:'1052'};
+SEED.invoices.forEach(i=>{i.motif='Maladie';i.lignes=i.lignes.map(l=>[LEGACY[l[0]]||l[0],l[1],l[2]])});
+Object.assign(SEED.patients[0],{dob:'1992-03-14',sexe:'F',rue:'Rue de Carouge',no:'54',npa:'1205',noAssure:'80756 0001 2345',assurance:'Assurance complémentaire (exemple)'});
+Object.assign(SEED.patients[1],{dob:'1974-07-02',sexe:'M',rue:'Rue Ancienne',no:'12',npa:'1227',noAssure:'80756 0002 3456',assurance:'Assurance complémentaire (exemple)'});
+Object.assign(SEED.patients[2],{dob:'1999-11-23',sexe:'F',rue:'Avenue de Cour',no:'8',npa:'1007',noAssure:'80756 0003 4567',assurance:'Assurance complémentaire (exemple)'});
+Object.assign(SEED.patients[3],{dob:'1985-05-30',sexe:'M',rue:'Rue de Rive',no:'3',npa:'1260',noAssure:'80756 0004 5678',assurance:'Assurance complémentaire (exemple)'});
+Object.assign(SEED.patients[4],{dob:'1963-01-09',sexe:'F',rue:'Chemin des Crêts',no:'21',npa:'1209',noAssure:'80756 0005 6789',assurance:'Assurance complémentaire (exemple)'});
+SEED.cabinet={nom:'Torella Soins naturels',therapeute:'Raffaella Torello, naturopathe',rue:'Rue des Alpes',no:'10',npa:'1201',ville:'Genève',rcc:'Z000000',registre:'RME / ASCA',iban:'CH9300762011623852957',rate:10};
+const RATEof=()=>+(DB&&DB.cabinet?DB.cabinet.rate:10)||10;
+const MOTIFS=['Maladie','Accident','Prévention','Grossesse'];
+const fmtIban=s=>String(s).replace(/\s/g,'').replace(/(.{4})/g,'$1 ').trim();
+const isExampleId=()=>DB.cabinet.rcc==='Z000000'||DB.cabinet.iban.replace(/\s/g,'')==='CH9300762011623852957';
+function ibanOk(iban){const s=iban.replace(/\s/g,'').toUpperCase();if(!/^(CH|LI)\d{19}$/.test(s))return false;const r=(s.slice(4)+s.slice(0,4)).replace(/[A-Z]/g,c=>c.charCodeAt(0)-55);let m=0;for(const ch of r)m=(m*10+ +ch)%97;return m===1}
+
+/* Swiss QR-facture : contenu SPC (version 0200, adresses structurées) */
+function spcPayload(inv){
+ const c=DB.cabinet,p=P(inv.p),amt=Math.abs(invTotal(inv)).toFixed(2);
+ return ['SPC','0200','1',c.iban.replace(/\s/g,''),'S',c.nom,c.rue,c.no,c.npa,c.ville,'CH','','','','','','','',amt,'CHF','S',full(p),p.rue||'',p.no||'',p.npa||'',p.ville,'CH','NON','','Facture '+inv.no+' · Tarif 590','EPD'].join('\n');
+}
+function qrMatrix(text){
+ if(typeof qrcode==='undefined')return null;
+ qrcode.stringToBytes=qrcode.stringToBytesFuncs['UTF-8'];
+ const q=qrcode(0,'M');q.addData(text,'Byte');q.make();const n=q.getModuleCount();const m=[];for(let r=0;r<n;r++){m.push([]);for(let c=0;c<n;c++)m[r].push(q.isDark(r,c))}return m;
+}
+function qrSvgReal(inv){
+ const m=qrMatrix(spcPayload(inv));if(!m)return qrSvg(inv.no);
+ const n=m.length,qz=0;let r='';for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(m[y][x])r+=`M${x} ${y}h1v1h-1z`;
+ const cs=n*7/46,o=(n-cs)/2;
+ return `<svg viewBox="0 0 ${n} ${n}" width="150" height="150" role="img" aria-label="QR-facture"><rect width="${n}" height="${n}" fill="#fff"/><path d="${r}" fill="#000"/><rect x="${o}" y="${o}" width="${cs}" height="${cs}" fill="#fff"/><rect x="${o+cs*.07}" y="${o+cs*.07}" width="${cs*.86}" height="${cs*.86}" fill="#000"/><rect x="${o+cs*.42}" y="${o+cs*.2}" width="${cs*.16}" height="${cs*.6}" fill="#fff"/><rect x="${o+cs*.2}" y="${o+cs*.42}" width="${cs*.6}" height="${cs*.16}" fill="#fff"/></svg>`;
+}
+
+/* PDF : facture Tarif 590 + section paiement QR */
+function buildPdf(inv){
+ const {jsPDF}=window.jspdf;const d=new jsPDF({unit:'mm',format:'a4'});const c=DB.cabinet,p=P(inv.p);const R=RATEof();
+ const T=(t,x,y,o)=>d.text(String(t),x,y,o||{});
+ d.setFont('helvetica','bold');d.setFontSize(15);T(c.nom,20,22);
+ d.setFont('helvetica','normal');d.setFontSize(9.5);T(c.therapeute,20,28);T(`${c.rue} ${c.no}, ${c.npa} ${c.ville}`,20,33);T(`N° RCC : ${c.rcc}    Registre : ${c.registre}`,20,38);
+ d.setFontSize(10);T(full(p),125,50);T(`${p.rue||''} ${p.no||''}`,125,55);T(`${p.npa||''} ${p.ville}`,125,60);
+ d.setFont('helvetica','bold');d.setFontSize(13);T((TYPES[inv.type][0])+' · Tarif 590',20,74);
+ d.setFont('helvetica','normal');d.setFontSize(9);
+ const rows=[['N° de document',inv.no],['Date',fdate(inv.d,{day:'2-digit',month:'2-digit',year:'numeric'})],['Motif du traitement',inv.motif||'Maladie'],['Période de traitement',fdate(inv.d,{day:'2-digit',month:'2-digit',year:'numeric'})+' au '+fdate(inv.d,{day:'2-digit',month:'2-digit',year:'numeric'})],['Patient·e',full(p)+' · né·e le '+(p.dob?fdate(p.dob,{day:'2-digit',month:'2-digit',year:'numeric'}):'—')+' · '+(p.sexe||'—')],['N° d\'assuré·e',p.noAssure||'—'],['Assurance',p.assurance||'—']];
+ rows.forEach((r,i)=>{d.setTextColor(110);T(r[0],20,82+i*5);d.setTextColor(0);T(r[1],62,82+i*5)});
+ let y=125;d.setFillColor(238,242,237);d.rect(20,y-4.5,170,7,'F');d.setFont('helvetica','bold');d.setFontSize(8.5);
+ const cols=[[22,'Date'],[40,'Tarif'],[52,'Position'],[70,'Désignation'],[142,'Min'],[154,'Qté'],[166,'Prix'],[188,'CHF']];
+ cols.forEach(([x,l],i)=>T(l,x,y,i>=4?{align:i===7?'right':'left'}:{}));
+ d.setFont('helvetica','normal');y+=8;const sg=inv.type==='avoir'?-1:1;
+ inv.lignes.forEach(l=>{T(fdate(inv.d,{day:'2-digit',month:'2-digit',year:'2-digit'}),22,y);T('590',40,y);T(l[0],52,y);const lib=d.splitTextToSize(codeLib(l[0])||l[1],68);T(lib,70,y);T(l[2]*5,142,y);T(l[2],154,y);T(R.toFixed(2),166,y);T((sg*l[2]*R).toFixed(2),188,y,{align:'right'});y+=5*lib.length+2;d.setDrawColor(220);d.line(20,y-3.5,190,y-3.5)});
+ y+=3;d.setFont('helvetica','bold');d.setFontSize(11);T('Total CHF',140,y);T(invTotal(inv).toFixed(2),188,y,{align:'right'});
+ d.setFont('helvetica','normal');d.setFontSize(8);d.setTextColor(90);y+=6;T('Prix unitaire par tranche de 5 minutes. TVA : exonéré.',20,y);y+=4.5;T('Arrêté à la somme de '+lettres(invTotal(inv))+'.',20,y);
+ if(isExampleId()){y+=6;d.setTextColor(178,58,48);d.setFont('helvetica','bold');T('DOCUMENT D\'EXEMPLE · RCC et IBAN fictifs, ne pas envoyer à une assurance.',20,y);d.setFont('helvetica','normal')}
+ d.setTextColor(0);
+ if(isBill(inv)&&inv.status!=='payee'){
+  const m=qrMatrix(spcPayload(inv));const top=192;
+  d.setLineDashPattern([1,1],0);d.setDrawColor(0);d.line(0,top,210,top);d.line(62,top,62,297);d.setLineDashPattern([],0);
+  const amt=invTotal(inv).toFixed(2);const cred=[fmtIban(c.iban),c.nom,`${c.rue} ${c.no}`,`${c.npa} ${c.ville}`];const deb=[full(p),`${p.rue||''} ${p.no||''}`,`${p.npa||''} ${p.ville}`];
+  d.setFont('helvetica','bold');d.setFontSize(11);T('Récépissé',5,top+12);
+  d.setFontSize(6);T('Compte / Payable à',5,top+19);d.setFont('helvetica','normal');d.setFontSize(8);cred.forEach((t,i)=>T(t,5,top+22.5+i*3.5));
+  d.setFont('helvetica','bold');d.setFontSize(6);T('Payable par',5,top+41);d.setFont('helvetica','normal');d.setFontSize(8);deb.forEach((t,i)=>T(t,5,top+44.5+i*3.5));
+  d.setFont('helvetica','bold');d.setFontSize(6);T('Monnaie',5,top+68);T('Montant',18,top+68);d.setFont('helvetica','normal');d.setFontSize(8);T('CHF',5,top+72);T(amt,18,top+72);
+  d.setFont('helvetica','bold');d.setFontSize(6);T('Point de dépôt',57,top+82,{align:'right'});
+  d.setFontSize(11);T('Section paiement',67,top+12);
+  if(m){const n=m.length,s=46/n,ox=67,oy=top+17;d.setFillColor(0);for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(m[r][k])d.rect(ox+k*s,oy+r*s,s+.02,s+.02,'F');
+   const cx=ox+23-3.5,cy=oy+23-3.5;d.setFillColor(255);d.rect(cx,cy,7,7,'F');d.setFillColor(0);d.rect(cx+.5,cy+.5,6,6,'F');d.setFillColor(255);d.rect(cx+2.9,cy+1.4,1.2,4.2,'F');d.rect(cx+1.4,cy+2.9,4.2,1.2,'F')}
+  d.setFont('helvetica','bold');d.setFontSize(8);T('Monnaie',67,top+72);T('Montant',85,top+72);d.setFont('helvetica','normal');d.setFontSize(10);T('CHF',67,top+77);T(amt,85,top+77);
+  d.setFont('helvetica','bold');d.setFontSize(8);T('Compte / Payable à',118,top+12);d.setFont('helvetica','normal');d.setFontSize(10);cred.forEach((t,i)=>T(t,118,top+16+i*4));
+  d.setFont('helvetica','bold');d.setFontSize(8);T('Informations supplémentaires',118,top+36);d.setFont('helvetica','normal');d.setFontSize(10);T('Facture '+inv.no+' · Tarif 590',118,top+40);
+  d.setFont('helvetica','bold');d.setFontSize(8);T('Payable par',118,top+48);d.setFont('helvetica','normal');d.setFontSize(10);deb.forEach((t,i)=>T(t,118,top+52+i*4));
+ }
+ return d.output('blob');
+}
+async function downloadPdf(no){
+ const inv=DB.invoices.find(x=>x.no===no);
+ if(!window.jspdf){toast('Le générateur PDF n\'a pas pu se charger. Rechargez la page.');return}
+ if(CLOUD){const url=URL.createObjectURL(buildPdf(inv));const a=document.createElement('a');a.href=url;a.download=`${inv.no}_${P(inv.p).nom}.pdf`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);toast('PDF téléchargé');return}
+ const dl=await claude?.use?.('downloads');
+ if(!dl){toast('Téléchargement indisponible dans cette vue. Ouvrez la page dans claude.ai.');return}
+ try{await dl.save({filename:`${inv.no}_${P(inv.p).nom}.pdf`,data:buildPdf(inv)});toast('PDF enregistré')}
+ catch(e){if(e&&e.code==='declined')return;toast(e&&e.code==='rate_limited'?'Une fenêtre d\'enregistrement est déjà ouverte.':'Le PDF n\'a pas pu être enregistré.')}
+}
+
+/* Base partagée : version en vigueur + version proposée par la tâche annuelle */
+if(!CLOUD)(async()=>{
+ try{
+  const db=await window.claude?.use?.('db');if(!db)return;
+  const user=await window.claude?.use?.('user');CANEDIT=user?await user.canEdit():false;
+  db.doc('config/tarif590').onSnapshot(s=>{if(s.exists){const v=s.data();if(Array.isArray(v.codes)&&v.codes.length){TARIF590={version:v.version,codes:v.codes,source:v.source,appliedAt:v.appliedAt};DBSRC=true;render()}}},()=>{});
+  db.doc('config/tarif590_pending').onSnapshot(s=>{PENDING=s.exists?s.data():null;render()},()=>{});
+  window.__seveDb=db;
+ }catch(e){}
+})();
+async function applyPending(){
+ if(CLOUD){if(!PENDING)return;const {error:e1}=await sb.from('tarif590').upsert({id:'current',data:{version:PENDING.version,codes:PENDING.codes,source:PENDING.source||'',appliedAt:new Date().toISOString()}});if(e1){toast('Mise à jour refusée : réservé au compte administrateur.');return}await sb.from('tarif590').delete().eq('id','pending');toast('Tarif 590 '+PENDING.version+' appliqué');await pullTarif();render();return}
+ const db=window.__seveDb;if(!db||!PENDING)return;
+ try{await db.doc('config/tarif590').set({version:PENDING.version,codes:PENDING.codes,source:PENDING.source||'',appliedAt:new Date().toISOString()});await db.doc('config/tarif590_pending').delete();toast('Tarif 590 '+PENDING.version+' appliqué')}
+ catch(e){toast('Mise à jour refusée : seuls les éditeurs de la page peuvent l\'appliquer.')}
+}
+async function dismissPending(){if(CLOUD){const {error}=await sb.from('tarif590').delete().eq('id','pending');if(error){toast('Action refusée : réservé au compte administrateur.');return}PENDING=null;toast('Proposition écartée');render();return}const db=window.__seveDb;if(!db)return;try{await db.doc('config/tarif590_pending').delete();toast('Proposition écartée')}catch(e){toast('Action refusée : droits d\'édition requis.')}}
+
+
+/* ---------- État ---------- */
+const KEY='torella-v1';
+/* ---------- Mode en ligne (Supabase) : connexion + synchronisation ---------- */
+let SESSION=null,SYNCED={},SYNC_T=null,SYNC_STATE='ok',IS_ADMIN=false;
+const KINDS=['patients','appts','invoices','depenses','remedies','customSym'];
+const keyOf=(k,x)=>k==='invoices'?x.no:x.id;
+function emptyDB(){const b=JSON.parse(JSON.stringify(SEED));return {patients:[],appts:[],invoices:[],depenses:[],remedies:JSON.parse(JSON.stringify(REMEDIES_BUILTIN)),customSym:[],cabinet:b.cabinet}}
+function snapshot(){const m={};KINDS.forEach(k=>{m[k]={};(DB[k]||[]).forEach(x=>{const id=keyOf(k,x);if(id)m[k][id]=JSON.stringify(x)})});m.cabinet={main:JSON.stringify(DB.cabinet)};return m}
+function setSync(st){SYNC_STATE=st;const el=document.getElementById('syncchip');if(el){el.textContent={ok:'Enregistré',busy:'Enregistrement…',err:'Non enregistré · nouvel essai',off:''}[st];el.className='sync '+st}}
+function scheduleSync(){if(!CLOUD||!SESSION)return;setSync('busy');clearTimeout(SYNC_T);SYNC_T=setTimeout(pushSync,600)}
+async function pushSync(){
+ const now=snapshot();const ups=[],dels=[];
+ for(const k of [...KINDS,'cabinet']){const a=now[k]||{},b=SYNCED[k]||{};
+  for(const id in a)if(a[id]!==b[id])ups.push({kind:k,id,data:JSON.parse(a[id])});
+  for(const id in b)if(!(id in a))dels.push([k,id]);}
+ try{
+  if(ups.length){const {error}=await sb.from('records').upsert(ups,{onConflict:'owner,kind,id'});if(error)throw error}
+  for(const [k,id] of dels){const {error}=await sb.from('records').delete().eq('kind',k).eq('id',id);if(error)throw error}
+  SYNCED=now;setSync('ok');
+ }catch(e){console.error(e);setSync('err');clearTimeout(SYNC_T);SYNC_T=setTimeout(pushSync,8000)}
+}
+async function pullAll(){
+ const rows=[];let from=0;
+ for(;;){const {data,error}=await sb.from('records').select('kind,id,data').range(from,from+999);if(error)throw error;rows.push(...data);if(data.length<1000)break;from+=1000}
+ if(!rows.length){DB=emptyDB();SYNCED={};await pushSync();return}
+ const d=emptyDB();KINDS.forEach(k=>d[k]=[]);
+ rows.forEach(r=>{if(r.kind==='cabinet')d.cabinet=r.data;else if(d[r.kind])d[r.kind].push(r.data)});
+ if(!d.remedies.length)d.remedies=JSON.parse(JSON.stringify(REMEDIES_BUILTIN));
+ d.invoices.sort((a,b)=>b.d.localeCompare(a.d)||b.no.localeCompare(a.no));
+ DB=d;SYNCED=snapshot();
+}
+async function pullTarif(){
+ const {data,error}=await sb.from('tarif590').select('id,data');if(error)return;
+ const cur=data.find(x=>x.id==='current'),pen=data.find(x=>x.id==='pending');
+ if(cur&&Array.isArray(cur.data.codes)){TARIF590=cur.data;DBSRC=true}
+ PENDING=pen?pen.data:null;
+ const {data:adm}=await sb.rpc('is_admin');IS_ADMIN=!!adm;CANEDIT=IS_ADMIN;
+}
+function loadExamples(){
+ const ex=JSON.parse(JSON.stringify(SEED));
+ ['patients','appts','invoices','depenses'].forEach(k=>{const have=new Set(DB[k].map(x=>keyOf(k,x)));ex[k].forEach(x=>{if(!have.has(keyOf(k,x)))DB[k].push(x)})});
+ save();S.pid=DB.patients[0]?.id;toast('Données d\'exemple ajoutées');render();
+}
+async function boot(){
+ if(!CLOUD){render();return}
+ setSync('off');
+ const {data:{session}}=await sb.auth.getSession();
+ sb.auth.onAuthStateChange((ev,s)=>{const had=!!SESSION;SESSION=s;if(ev==='PASSWORD_RECOVERY'){setTimeout(newPasswordForm,300)}if(ev==='SIGNED_OUT'){DB=emptyDB();SYNCED={};showAuth()}else if(s&&!had)afterLogin()});
+ SESSION=session;if(session)afterLogin();else showAuth();
+}
+async function afterLogin(){
+ hideAuth();document.body.classList.add('loading');
+ try{await pullAll();await pullTarif();syncRem();syncSym();S.pid=DB.patients[0]?.id||null;setSync('ok')}
+ catch(e){console.error(e);toast('Impossible de charger les données. Vérifiez la connexion.')}
+ document.body.classList.remove('loading');render();
+}
+function showAuth(mode='login',msg=''){
+ const el=document.getElementById('auth');el.hidden=false;
+ el.innerHTML=`<div class="auth-card"><div class="brand auth-brand"><svg width="40" height="40" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 30V14" stroke="var(--leaf)" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M16 19c-6 0-10-4-10-11 6 0 10 4 10 11Z" fill="var(--leaf)"/><path d="M16 15c5 0 9-3 9-9-5 0-9 3-9 9Z" fill="var(--sun)"/><circle cx="16" cy="9" r="2.6" fill="var(--rose)"/></svg><div><b>Torella</b><small>Soins naturels · Raffaella Torello</small></div></div>
+  <h2 style="margin-top:6px">${mode==='login'?'Connexion':mode==='signup'?'Créer le compte du cabinet':'Mot de passe oublié'}</h2>
+  <form class="form" id="fauth" style="grid-template-columns:1fr">
+   <label>E-mail<input class="input" id="au-email" type="email" autocomplete="email" required></label>
+   ${mode!=='reset'?`<label>Mot de passe<input class="input" id="au-pass" type="password" minlength="8" autocomplete="${mode==='login'?'current-password':'new-password'}" required></label>`:''}
+   <p class="form-err" id="au-err" role="alert" ${msg?'':'hidden'}>${esc(msg)}</p>
+   <button class="btn primary" type="submit" style="justify-content:center">${mode==='login'?'Se connecter':mode==='signup'?'Créer le compte':'Envoyer le lien'}</button>
+  </form>
+  <div class="auth-links">${mode==='login'?'<button data-auth="signup">Créer un compte</button><button data-auth="reset">Mot de passe oublié</button>':'<button data-auth="login">Retour à la connexion</button>'}</div>
+  <p class="note">Les données des patients sont hébergées en Suisse (Zurich) et accessibles uniquement avec ce compte.</p></div>`;
+ el.querySelectorAll('[data-auth]').forEach(b=>b.addEventListener('click',()=>showAuth(b.dataset.auth)));
+ el.querySelector('#fauth').addEventListener('submit',async ev=>{ev.preventDefault();const email=$('#au-email').value.trim(),pass=$('#au-pass')?.value||'';const err=$('#au-err');const btn=ev.target.querySelector('button[type=submit]');btn.disabled=true;
+  const fail=t=>{err.textContent=t;err.hidden=false;btn.disabled=false};
+  const redirect=location.origin+location.pathname;
+  if(mode==='login'){const {error}=await sb.auth.signInWithPassword({email,password:pass});if(error)return fail(error.message.includes('Email not confirmed')?'Confirmez d\'abord votre adresse avec le lien reçu par e-mail.':'E-mail ou mot de passe incorrect.')}
+  else if(mode==='signup'){const {data,error}=await sb.auth.signUp({email,password:pass,options:{emailRedirectTo:redirect}});if(error)return fail(error.message.includes('Password')?'Le mot de passe doit compter au moins 8 caractères.':'Création impossible : '+error.message);if(!data.session)showAuth('login','Compte créé. Ouvrez le lien reçu par e-mail pour confirmer votre adresse, puis connectez-vous.')}
+  else{const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:redirect});if(error)return fail('Envoi impossible : '+error.message);showAuth('login','Si ce compte existe, un lien de réinitialisation vient d\'être envoyé.')}
+ });
+ setTimeout(()=>$('#au-email')?.focus(),50);
+}
+function newPasswordForm(){modal(`<div class="panel-h"><h3>Nouveau mot de passe</h3></div><form class="form" id="fnp" style="grid-template-columns:1fr"><label>Mot de passe<input class="input" id="np-pass" type="password" minlength="8" autocomplete="new-password" required></label><p class="form-err" id="np-err" hidden></p><button class="btn primary" type="submit">Enregistrer</button></form>`);$('#fnp').addEventListener('submit',async ev=>{ev.preventDefault();const {error}=await sb.auth.updateUser({password:$('#np-pass').value});if(error){$('#np-err').textContent='Mot de passe refusé : au moins 8 caractères.';$('#np-err').hidden=false;return}closeModal();toast('Mot de passe modifié')})}
+function hideAuth(){const el=document.getElementById('auth');el.hidden=true;el.innerHTML=''}
+async function logout(){await pushSync();await sb.auth.signOut()}
+let DB;
+try{DB=JSON.parse(localStorage.getItem(KEY))||null}catch(e){DB=null}
+if(!DB||!DB.patients)DB=JSON.parse(JSON.stringify(SEED));
+if(!DB.remedies)DB.remedies=JSON.parse(JSON.stringify(REMEDIES));
+if(!DB.customSym)DB.customSym=[];
+if(CLOUD)DB=emptyDB();
+const save=()=>{if(CLOUD){scheduleSync();return}try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}};
+syncSym();syncRem();
+const S={view:'accueil',pid:'p1',ptab:'synthese',sel:new Set(['insomnie','ruminations','fatigue','ballonnements']),mq:'',mcat:'all',mid:'valeriane',ans:{},inv:'2026-0148',pq:'',gtab:'docs',dtype:'all',per:TODAY_ISO.slice(0,7),wk:0};
+const VIEWS=[['accueil','Accueil','home'],['patients','Patients','users'],['bilan','Répertoire','grid'],['matiere','Remèdes','leaf'],['terrain','Terrain','compass'],['agenda','Agenda','cal'],['factures','Gestion','doc']];
+const valid=VIEWS.map(v=>v[0]);
+const h0=(location.hash||'').slice(1); if(valid.includes(h0))S.view=h0;
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const P=id=>DB.patients.find(p=>p.id===id);
+const full=p=>p?`${p.prenom} ${p.nom}`:'';
+const tone=p=>'t'+((Math.max(0,DB.patients.indexOf(p))%5)+1);
+const ini=p=>p?(p.prenom[0]+p.nom[0]):'';
+const chf=n=>'CHF '+n.toLocaleString('fr-CH',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fdate=(s,o={day:'numeric',month:'short',year:'numeric'})=>new Date(s+'T12:00').toLocaleDateString('fr-CH',o);
+const invTotal=i=>(i.type==='avoir'?-1:1)*i.lignes.reduce((a,l)=>a+l[2]*RATEof(),0);
+const isBill=i=>i.type==='facture'||i.type==='note';
+/* Montant en lettres, usage suisse romand (septante, huitante, nonante) */
+function lettres(n){
+ const U=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf'];
+ const D={2:'vingt',3:'trente',4:'quarante',5:'cinquante',6:'soixante',7:'septante',8:'huitante',9:'nonante'};
+ const lt100=x=>{if(x<20)return U[x];const d=Math.floor(x/10),u=x%10;return D[d]+(u===0?'':u===1?' et un':'-'+U[u])};
+ const lt1000=x=>{const c=Math.floor(x/100),r=x%100;let s='';if(c)s=(c>1?U[c]+' cent':'cent')+(c>1&&r===0?'s':'');if(r)s+=(s?' ':'')+lt100(r);return s||'zéro'};
+ const w=x=>{if(x===0)return 'zéro';const m=Math.floor(x/1e6),k=Math.floor(x%1e6/1000),r=x%1000;let s='';if(m)s+=lt1000(m)+(m>1?' millions':' million');if(k)s+=(s?' ':'')+(k===1?'mille':lt1000(k).replace(/cents$/,'cent')+' mille');if(r)s+=(s?' ':'')+lt1000(r);return s};
+ const a=Math.abs(n),f=Math.floor(a+1e-9),c=Math.round((a-f)*100);
+ let s=w(f)+(f>1?' francs':' franc');if(c)s+=' et '+w(c)+(c>1?' centimes':' centime');return (n<0?'moins ':'')+s;
+}
+const TYPES={facture:['Facture','Factures'],devis:['Devis','Devis'],avoir:['Avoir','Avoirs'],note:['Note d\'honoraires','Notes d\'honoraires']};
+const MODES=['Espèces','TWINT','Carte','Virement'];
+const pad=n=>String(n).padStart(2,'0');
+
+function go(v,extra={}){Object.assign(S,extra);S.view=v;try{history.replaceState(null,'','#'+v)}catch(e){}render();window.scrollTo(0,0)}
+function toast(t){const el=document.createElement('div');el.className='toast';el.setAttribute('role','status');el.textContent=t;document.body.appendChild(el);setTimeout(()=>el.remove(),2200)}
+
+/* ---------- Navigation ---------- */
+function renderNav(){
+ $('#nav').innerHTML=VIEWS.map(([id,l,i])=>`<button data-go="${id}" ${S.view===id?'aria-current="page"':''}>${ic(i)}${l}</button>`).join('');
+ $('#tabbar').innerHTML=VIEWS.map(([id,l,i])=>`<button data-go="${id}" ${S.view===id?'aria-current="page"':''}>${ic(i)}<span>${l}</span></button>`).join('');
+ const p=P(S.pid);
+ $('#ctx').innerHTML=`<span>Patient actif</span>${p?esc(full(p)):'Aucun'}`;
+ if(CLOUD){const mn=$('#modenote');if(mn)mn.innerHTML=SESSION?`${esc(SESSION.user.email)} · <button class="linkbtn" data-act="logout">Se déconnecter</button>`:'';setSync(SYNC_STATE)}
+}
+
+/* ---------- Accueil ---------- */
+function vAccueil(){
+ const td=DB.appts.filter(a=>a.d===TODAY_ISO).sort((a,b)=>a.h*60+a.m-(b.h*60+b.m));
+ const now=new Date();const nowMin=now.getHours()*60+now.getMinutes();
+ const paid=DB.invoices.filter(i=>i.paiement&&i.paiement.d.startsWith(TODAY_ISO.slice(0,7))).reduce((a,i)=>a+invTotal(i),0);
+ const open=DB.invoices.filter(i=>isBill(i)&&i.status!=='payee');
+ const w0=isoD(weekStart(0)),w1=(()=>{const d=weekStart(0);d.setDate(d.getDate()+6);return isoD(d)})();const week=DB.appts.filter(a=>a.d>=w0&&a.d<=w1).length;
+ return `
+ <div class="mob-brand"><b>Torella</b>${CLOUD?'':'<span class="chip lav">Données d\'exemple</span>'}</div>
+ <section class="hero"><svg class="deco" viewBox="0 0 300 220" aria-hidden="true">
+  <g fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round"><path d="M210 230C200 160 214 100 250 40"/><path d="M150 230c10-60 0-110-30-150"/><path d="M262 230c-8-40 4-80 30-110"/></g>
+  <g fill="rgba(191,232,204,.75)"><path d="M232 120c-26-2-40-18-42-40 24 2 40 16 42 40Z"/><path d="M238 86c22-6 38-24 38-46-22 4-38 22-38 46Z"/><path d="M134 140c-24-8-34-28-30-50 22 8 34 26 30 50Z"/><path d="M128 104c18-12 26-32 20-52-18 12-26 30-20 52Z"/></g>
+  <g fill="rgba(255,210,122,.9)"><circle cx="250" cy="38" r="9"/><circle cx="120" cy="78" r="7"/></g>
+  <g fill="rgba(246,166,192,.85)"><circle cx="241" cy="30" r="5"/><circle cx="259" cy="30" r="5"/><circle cx="241" cy="46" r="5"/><circle cx="259" cy="46" r="5"/></g>
+  <g fill="rgba(185,162,240,.85)"><ellipse cx="290" cy="118" rx="5" ry="9"/><ellipse cx="282" cy="132" rx="5" ry="9"/><ellipse cx="292" cy="146" rx="5" ry="9"/></g>
+ </svg><div><div class="eyebrow">${(d=>d.charAt(0).toUpperCase()+d.slice(1))(TODAY.toLocaleDateString('fr-CH',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))}</div><h1>Bonjour ${esc((DB.cabinet.therapeute||'').split(/[ ,]/)[0]||'')}, ${td.length===0?'aucune séance aujourd\'hui':(['','une','deux','trois','quatre','cinq','six','sept','huit','neuf','dix'][td.length]||td.length)+(td.length>1?' séances':' séance')+' aujourd\'hui'}.</h1></div>
+ <button class="btn" data-act="newpatient">${ic('plus')}Nouveau patient</button></section>
+ <div class="kpis">
+  <div class="kpi t1"><div class="v">${week}</div><div class="l">séances cette semaine</div></div>
+  <div class="kpi t3"><div class="v mono" style="font-family:var(--f-display)">${Math.round(paid)}</div><div class="l">CHF encaissés en octobre</div></div>
+  <div class="kpi t4"><div class="v">${open.length}</div><div class="l">factures ouvertes${open.some(i=>i.status==='retard')?` · <span style="color:var(--bad)">1 en retard</span>`:''}</div></div>
+ </div>
+ <div class="grid g-dash">
+  <section class="panel"><div class="panel-h"><h2>Aujourd'hui</h2><button class="btn ghost sm" data-go="agenda">Semaine ${ic('arrow')}</button></div>
+   <div class="today">${td.length?'':'<p class="note" style="margin:0">Aucun rendez-vous aujourd\'hui. <button class="btn sm" data-act="newappt">Planifier</button></p>'}${td.map(a=>{const p=P(a.p);const st=a.h*60+a.m;const isNow=nowMin>=st&&nowMin<st+a.dur;return `
+    <div class="slot ${p?tone(p):'t3'} ${isNow?'now':''}"><div class="t">${pad(a.h)}:${pad(a.m)}<small>${a.dur} min</small></div>
+    <div><b>${esc(p?full(p):a.nom)}</b><div class="muted" style="font-size:13.5px">${esc(p?p.motif:'Première consultation · motif à recueillir')}</div></div>
+    ${p?`<button class="btn sm" data-open="${p.id}">Ouvrir</button>`:`<span class="chip saf">Bilan</span>`}</div>`}).join('')}</div>
+  </section>
+  <section class="panel"><div class="panel-h"><h2>À relancer</h2></div>${open.length?'':'<p class="note" style="margin:0">Aucune facture en attente.</p>'}
+   ${open.map(i=>{const p=P(i.p);return `<div class="list-row"><div class="who"><div class="avatar ${tone(p)}">${ini(p)}</div><div><b>${esc(full(p))}</b><small class="mono">${i.no} · ${fdate(i.d)}</small></div></div><div style="text-align:right"><div class="mono">${chf(invTotal(i))}</div>${statusChip(i.status)}</div></div>`}).join('')}
+   <div class="panel-h" style="margin:18px 0 6px"><h2>Programmes en cours</h2></div>
+   ${DB.patients.slice(0,4).map(p=>`<div class="list-row"><div style="min-width:0"><b style="font-weight:600">${esc(full(p))}</b><div class="muted" style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.programme.map(x=>REM[x.r]?.nom).filter(Boolean).join(' · ')||'Aucun produit'}</div></div><button class="btn ghost sm" data-open="${p.id}">${ic('arrow')}</button></div>`).join('')}
+  </section>
+ </div>`;
+}
+const statusChip=s=>({payee:'<span class="chip leaf inv-status">Réglée</span>',envoyee:'<span class="chip warn inv-status">Envoyée</span>',retard:'<span class="chip bad inv-status">En retard</span>',ouvert:'<span class="chip inv-status">En attente</span>',accepte:'<span class="chip saf inv-status">Accepté</span>',converti:'<span class="chip inv-status">Facturé</span>'}[s]||'');
+
+/* ---------- Patients ---------- */
+function vPatients(){
+ if(S.pdetail) return vPatient(P(S.pid));
+ const q=S.pq.toLowerCase();
+ const list=DB.patients.filter(p=>(full(p)+p.ville+p.motif).toLowerCase().includes(q));
+ return `<div class="head"><div><div class="eyebrow">${DB.patients.length} dossiers</div><h1>Patients</h1></div><button class="btn primary" data-act="newpatient">${ic('plus')}Nouveau patient</button></div>
+ <div class="search"><span>${ic('search')}</span><input class="input" id="pq" placeholder="Nom, ville, motif…" value="${esc(S.pq)}" aria-label="Rechercher un patient"></div>
+ <div class="panel" style="padding:6px 10px"><div class="scroll-x"><table class="ptable"><thead><tr><th>Patient</th><th class="hide-m">Motif</th><th class="hide-m">Terrain</th><th>Dernière séance</th></tr></thead><tbody>
+ ${list.map(p=>{const last=p.seances[p.seances.length-1];const d=DIATH.find(x=>x.id===p.terrain);return `<tr class="click" data-open="${p.id}"><td><div class="who"><div class="avatar ${tone(p)}">${ini(p)}</div><div><b>${esc(full(p))}</b><small>${ageOf(p)} ans · ${esc(p.ville)}</small></div></div></td><td class="hide-m" style="max-width:340px;color:var(--ink-2);font-size:14px">${esc(p.motif)}</td><td class="hide-m">${d?`<span class="chip">${d.id} · ${d.nom}</span>`:'<span class="muted">À établir</span>'}</td><td class="mono" style="font-size:13px">${last?fdate(last.d):'—'}</td></tr>`}).join('')}
+ </tbody></table></div>${list.length?'':'<div class="empty">Aucun patient ne correspond à « '+esc(S.pq)+' ».</div>'}</div>`;
+}
+function vPatient(p){
+ if(!p){S.pdetail=false;return vPatients()}
+ const d=DIATH.find(x=>x.id===p.terrain);
+ const tabs=[['synthese','Synthèse'],['anamnese','Anamnèse'],['programme','Programme'],['seances','Séances']];
+ const hv=p.hv;
+ const meter=(l,v,goal,unit,rev)=>{const pct=Math.min(100,Math.round(v/goal*100));const ok=rev?v<=goal:v>=goal;return `<div class="meter"><div class="row"><span>${l}</span><span class="mono">${v} ${unit} <span class="muted">/ ${rev?'max ':''}${goal}</span></span></div><div class="bar"><i class="${ok?'':'w'}" style="width:${pct}%"></i></div></div>`};
+ let body='';
+ if(S.ptab==='synthese') body=`<div class="grid g-2">
+  <section class="panel"><div class="panel-h"><h2>Motif de consultation</h2></div><p style="margin:0 0 14px;max-width:60ch">${esc(p.motif)}</p>
+   <div class="panel-h"><h2>Symptômes retenus</h2><button class="btn sm" data-act="reperto">Répertorier ${ic('arrow')}</button></div>
+   <div class="chips">${p.sym.map(s=>`<span class="chip leaf">${esc(SYM[s]?.n)}</span>`).join('')}</div>
+   <div class="panel-h" style="margin-top:18px"><h2>Terrain</h2><button class="btn ghost sm" data-go="terrain">Questionnaire</button></div>
+   ${d?`<div><span class="chip saf">Diathèse ${d.id}</span> <b style="font-weight:600">${d.nom}</b><div class="muted" style="font-size:13.5px;margin-top:4px">Catalyseur associé : ${d.oligo}</div></div>`:'<span class="muted">Pas encore établi.</span>'}
+  </section>
+  <section class="panel"><div class="panel-h"><h2>Hygiène vitale</h2><span class="note">Déclaratif, dernière séance</span></div>
+   <div class="meters">${meter('Sommeil',hv.sommeil,7.5,'h')}${meter('Eau',hv.eau,1.5,'L')}${meter('Activité physique',hv.sport,3,'×/sem.')}${meter('Café',hv.cafe,2,'tasses',true)}</div>
+  </section></div>`;
+ if(S.ptab==='anamnese') body=`<section class="panel"><dl class="kv">
+  <dt>Date de naissance</dt><dd>${p.dob?fdate(p.dob,{day:'numeric',month:'long',year:'numeric'}):'—'} (${ageOf(p)} ans)</dd><dt>Sexe</dt><dd>${{F:'Femme',M:'Homme',X:'Autre / non précisé'}[p.sexe]||'—'}</dd><dt>Profession</dt><dd>${esc(p.metier)}</dd>
+  <dt>Adresse</dt><dd>${esc([p.rue,p.no].filter(Boolean).join(' '))}${p.rue?'<br>':''}${esc([p.npa,p.ville].filter(Boolean).join(' '))}</dd><dt>Téléphone</dt><dd class="mono">${esc(p.tel)}</dd><dt>E-mail</dt><dd>${esc(p.email||'—')}</dd>
+  <dt>Assurance</dt><dd>${esc(p.assurance||'—')}</dd><dt>N° d'assuré·e</dt><dd class="mono">${esc(p.noAssure||'—')}</dd><dt>N° AVS</dt><dd class="mono">${esc(p.avs||'—')}</dd>
+  <dt>Médecin traitant</dt><dd>${esc(p.medecin||'—')}</dd><dt>Allergies</dt><dd>${esc(p.allergies||'—')}</dd><dt>Traitements en cours</dt><dd>${esc(p.traitements||'—')}</dd>
+  <dt>Antécédents</dt><dd>${esc(p.antecedents)}</dd><dt>Alimentation</dt><dd>${esc(p.alimentation)}</dd>
+  <dt>Sommeil</dt><dd>${hv.sommeil} h par nuit</dd><dt>Hydratation</dt><dd>${hv.eau} L par jour</dd><dt>Café</dt><dd>${hv.cafe} tasses par jour</dd><dt>Activité</dt><dd>${hv.sport} séance(s) par semaine</dd>
+ </dl></section>`;
+ if(S.ptab==='programme') body=`<div class="rx">
+  <div class="rx-head"><div><div class="eyebrow">Programme d'hygiène vitale</div><h3>${esc(full(p))}</h3><div class="muted" style="font-size:13px">Établi le ${fdate(TODAY_ISO,{day:'numeric',month:'long',year:'numeric'})}</div></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start"><button class="btn sm" data-go="matiere">${ic('plus')}Ajouter un produit</button><button class="btn sm" data-act="copyrx">${ic('copy')}Copier le texte</button></div></div>
+  ${p.programme.length?p.programme.map((x,i)=>{const r=REM[x.r];if(!r)return'';return `<div class="rx-item c-${r.cat}"><div style="min-width:0"><div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap"><b style="font-weight:600;font-size:15.5px">${r.nom}</b><span class="latin" style="font-size:13.5px">${r.latin}</span><span class="chip" style="font-size:11.5px">${CATS[r.cat][0]}</span></div><div style="margin-top:4px;font-size:14px">${esc(r.poso)}</div>${x.note?`<div class="muted" style="font-size:13px">Note : ${esc(x.note)}</div>`:''}<div class="note" style="margin-top:4px">Précaution : ${esc(r.prec)}</div></div><button class="icon-btn" aria-label="Retirer ${r.nom}" data-rmrx="${i}">${ic('x')}</button></div>`}).join(''):'<div class="empty">Aucun produit pour l\'instant. Ajoutez-en depuis les remèdes ou le répertoire.</div>'}
+ </div>`;
+ if(S.ptab==='seances') body=`<section class="panel"><div class="timeline">${[...p.seances].reverse().map(s=>`<div class="tl"><div><div class="mono" style="font-size:13px">${fdate(s.d)}</div><span class="chip ${s.type.startsWith('Bilan')?'saf':''}" style="margin-top:6px">${s.type}</span></div><p style="margin:0;max-width:65ch">${esc(s.note)}</p></div>`).join('')}</div></section>`;
+ return `<button class="back" data-act="backlist">${ic('back')}Patients</button>
+ <div class="p-head"><div class="avatar ${tone(p)}">${ini(p)}</div><div style="flex:1;min-width:200px"><h1 style="margin:0">${esc(full(p))}</h1><div class="muted">${ageOf(p)} ans · ${esc(p.metier)} · ${esc(p.ville)}</div></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-act="editpatient">Modifier la fiche</button><button class="btn" data-act="reperto">${ic('grid')}Bilan des symptômes</button></div></div>
+ <div class="tabs" role="tablist">${tabs.map(([id,l])=>`<button role="tab" aria-selected="${S.ptab===id}" data-ptab="${id}">${l}${id==='programme'?` <span class="muted">${p.programme.length}</span>`:''}</button>`).join('')}</div>
+ ${body}`;
+}
+
+/* ---------- Répertoire ---------- */
+function scoreAll(){
+ const sel=[...S.sel];
+ return REMEDIES.map(r=>{let s=0,c=0;sel.forEach(id=>{const w=r.sym[id]||0;s+=w;if(w)c++});return {r,s,c}}).filter(x=>x.c>0).sort((a,b)=>b.c-a.c||b.s-a.s).slice(0,12);
+}
+function vBilan(){
+ const p=P(S.pid);const sel=[...S.sel];const res=scoreAll();const max=Math.max(1,...res.map(x=>x.s));
+ return `<div class="head"><div><div class="eyebrow">Répertorisation${p?' · '+esc(full(p)):''}</div><h1>Croiser les symptômes</h1></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">${p?`<button class="btn" data-act="loadsym">Symptômes de ${esc(p.prenom)}</button>`:''}<button class="btn ghost" data-act="clearsym">Tout effacer</button></div></div>
+ <div class="rep">
+  <section class="panel" aria-label="Symptômes">${SYMPTOMS.map(([g,l],gi)=>`<div class="symgroup t${gi%5+1}"><h4>${g}</h4>${l.map(([id,n])=>`<label class="sym"><input type="checkbox" id="s-${id}" data-sym="${id}" ${S.sel.has(id)?'checked':''}>${n}</label>`).join('')}</div>`).join('')}</section>
+  <section class="panel" style="min-width:0">
+   <div class="panel-h"><h2>${res.length?`${res.length} produits couvrent au moins un symptôme`:'Résultats'}</h2><div class="chips"><span class="chip"><i class="d d1"></i>1</span><span class="chip"><i class="d d2"></i>2</span><span class="chip"><i class="d d3"></i>3 · degré</span></div></div>
+   ${sel.length?`<div class="scroll-x"><table class="rgrid"><thead><tr><th class="rem">Produit</th>${sel.map(id=>`<th><div>${esc(SYM[id]?.n||'')}</div></th>`).join('')}<th class="sc">Score</th></tr></thead><tbody>
+   ${res.map(({r,s,c})=>`<tr class="rrow" data-mono="${r.id}"><td class="rem"><b>${r.nom}</b><small class="latin">${r.latin}</small> <small class="muted">· ${CATS[r.cat][1]}</small></td>${sel.map(id=>`<td class="dot">${r.sym[id]?`<i class="d d${r.sym[id]}" title="Degré ${r.sym[id]}"></i>`:''}</td>`).join('')}<td class="sc"><div class="score"><div class="bar"><i style="width:${s/max*100}%"></i></div><span class="mono" style="font-size:12.5px">${c}/${sel.length}</span></div></td></tr>`).join('')}
+   </tbody></table></div><p class="note" style="margin:14px 0 0">Classement par nombre de symptômes couverts, puis par somme des degrés. Touchez un produit pour ouvrir sa fiche.</p>`
+   :`<div class="empty"><h3>Aucun symptôme coché</h3>Cochez les symptômes relevés pendant l'anamnèse pour voir les produits qui les couvrent.</div>`}
+  </section>
+ </div>`;
+}
+
+/* ---------- Matière médicale ---------- */
+function vMatiere(){
+ const q=S.mq.toLowerCase();
+ const list=REMEDIES.filter(r=>(S.mcat==='all'||r.cat===S.mcat)&&(r.nom+r.latin+r.props.join(' ')+Object.keys(r.sym).map(k=>SYM[k]?.n||'').join(' ')).toLowerCase().includes(q));
+ if(!list.find(r=>r.id===S.mid)&&list[0])S.mid=list[0].id;
+ const r=REM[S.mid];const p=P(S.pid);
+ const inRx=p&&p.programme.some(x=>x.r===r?.id);
+ return `<div class="head"><div><div class="eyebrow">Pharmacopée · ${REMEDIES.length} fiches</div><h1>Remèdes</h1></div><button class="btn primary" data-act="newrem">${ic('plus')}Ajouter un remède</button></div>
+ <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><div class="search"><span>${ic('search')}</span><input class="input" id="mq" placeholder="Plante, propriété, symptôme…" value="${esc(S.mq)}" aria-label="Rechercher un remède"></div>
+ <div class="seg" role="group" aria-label="Catégorie"><button aria-pressed="${S.mcat==='all'}" data-mcat="all">Tout</button>${Object.entries(CATS).map(([k,v])=>`<button aria-pressed="${S.mcat===k}" data-mcat="${k}">${v[0].replace('thérapie','')}</button>`).join('')}</div></div>
+ <div class="mm">
+  <section class="panel" style="padding:8px"><div class="mlist">${list.map(x=>`<button class="mitem c-${x.cat}" data-mid="${x.id}" aria-current="${x.id===S.mid}"><span class="glyph">${CATS[x.cat][1]}</span><span style="min-width:0"><b>${esc(x.nom)}</b><small class="latin">${esc(x.latin)}</small></span></button>`).join('')||'<div class="empty">Aucun résultat.</div>'}</div></section>
+  ${r?`<article class="plate c-${r.cat}">
+   <div class="plate-top"><canvas id="herb" width="300" height="300" aria-hidden="true"></canvas><div style="min-width:0"><div class="eyebrow">${CATS[r.cat][0]} · ${esc(r.part)}</div><div class="plate-name">${esc(r.nom)}</div><div class="latin" style="font-size:16px">${esc(r.latin)}</div>${r.custom?'<span class="chip lav" style="margin-top:6px">Ajouté par vous</span>':r.edited?'<span class="chip lav" style="margin-top:6px">Modifié</span>':''}
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">${p?`<button class="btn ${inRx?'':'primary'} sm" data-addrx="${r.id}" ${inRx?'disabled':''}>${ic(inRx?'check':'plus')}${inRx?'Dans le programme de '+esc(p.prenom):'Ajouter au programme de '+esc(p.prenom)}</button>`:''}<button class="btn sm" data-act="editrem">Modifier</button></div></div></div>
+   <div class="plate-body">
+    <div class="sec"><h4>Propriétés</h4><div class="chips">${r.props.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div></div>
+    <div class="sec"><h4>Usage traditionnel</h4><p>${esc(r.tradi)}</p></div>
+    <div class="sec"><h4>Indications répertoriées</h4><div class="chips">${Object.entries(r.sym).sort((a,b)=>b[1]-a[1]).filter(([k])=>SYM[k]).map(([k,w])=>`<span class="chip"><i class="d d${w}"></i>${esc(SYM[k].n)}</span>`).join('')}</div></div>
+    <div class="sec"><h4>Posologie usuelle</h4><p>${esc(r.poso)}</p></div>
+    <div class="sec" style="grid-column:1/-1"><h4>Précautions</h4><div class="caution">${esc(r.prec)}</div></div>
+   </div></article>`:'<div></div>'}
+ </div>
+ <p class="note">Les fiches fournies sont un point de départ : modifiez-les ou ajoutez les vôtres avec vos propres sources.</p>`;
+}
+/* petite planche botanique générative, seedée par le nom */
+function drawHerb(r){
+ const c=$('#herb');if(!c)return;const x=c.getContext('2d');const cs=getComputedStyle(document.documentElement);
+ const pl=getComputedStyle(document.querySelector('.plate')||document.documentElement);const leaf=(pl.getPropertyValue('--c')||cs.getPropertyValue('--leaf')).trim(),saf=cs.getPropertyValue(r.cat==='bach'?'--rose':'--saffron').trim(),ink=cs.getPropertyValue('--ink-3').trim();
+ let seed=[...r.id].reduce((a,ch)=>a*31+ch.charCodeAt(0),7)>>>0;const rnd=()=>(seed=(seed*1664525+1013904223)>>>0)/4294967296;
+ x.clearRect(0,0,300,300);x.lineCap='round';
+ if(r.cat==='oligo'){x.strokeStyle=ink;x.lineWidth=1.5;const n=6;for(let i=0;i<n;i++){const a=i/n*Math.PI*2;x.beginPath();x.arc(150+Math.cos(a)*70,150+Math.sin(a)*70,22,0,7);x.stroke()}x.fillStyle=saf;x.beginPath();x.arc(150,150,34,0,7);x.fill();x.fillStyle=getComputedStyle(document.body).backgroundColor;x.font='500 26px "IBM Plex Mono", monospace';x.textAlign='center';x.textBaseline='middle';x.fillText(r.latin.split('-')[0],150,151);return}
+ const stems=r.cat==='bach'?1:2+Math.floor(rnd()*2);
+ for(let s=0;s<stems;s++){
+  const bx=150+(s-(stems-1)/2)*34,top=50+rnd()*40,bend=(rnd()-.5)*60;
+  x.strokeStyle=ink;x.lineWidth=2;x.beginPath();x.moveTo(bx,280);x.quadraticCurveTo(bx+bend,180,bx+bend*.6,top);x.stroke();
+  const leaves=4+Math.floor(rnd()*4);
+  for(let i=0;i<leaves;i++){const t=.25+i/leaves*.7;const py=280-(280-top)*t;const px=bx+bend*Math.sin(t*1.6)*.75;const dir=i%2?1:-1;const len=22+rnd()*26*(1-t*.4);const ang=dir*(.6+rnd()*.5);
+   x.save();x.translate(px,py);x.rotate(ang-Math.PI/2*dir*.2);x.fillStyle=leaf;x.globalAlpha=.55+rnd()*.4;x.beginPath();x.moveTo(0,0);x.quadraticCurveTo(dir*len*.5,-len*.45,dir*len,-len*.1);x.quadraticCurveTo(dir*len*.5,len*.25,0,0);x.fill();x.restore()}
+  x.globalAlpha=1;
+  const fx=bx+bend*.6,fy=top;
+  if(r.cat==='gemmo'){x.fillStyle=saf;for(let k=0;k<3;k++){x.beginPath();x.ellipse(fx+(k-1)*7,fy+k*3,6,12,(k-1)*.4,0,7);x.fill()}}
+  else{const petals=5+Math.floor(rnd()*3);for(let k=0;k<petals;k++){const a=k/petals*Math.PI*2;x.fillStyle=k%2?saf:leaf;x.globalAlpha=.85;x.beginPath();x.ellipse(fx+Math.cos(a)*10,fy+Math.sin(a)*10,9,5,a,0,7);x.fill()}x.globalAlpha=1;x.fillStyle=saf;x.beginPath();x.arc(fx,fy,5,0,7);x.fill()}
+ }
+ if(r.cat==='aroma'){x.fillStyle=saf;x.globalAlpha=.9;x.beginPath();x.moveTo(250,200);x.quadraticCurveTo(266,228,250,236);x.quadraticCurveTo(234,228,250,200);x.fill();x.globalAlpha=1}
+}
+
+/* ---------- Terrain ---------- */
+function vTerrain(){
+ const p=P(S.pid);
+ const sc=DIATH.map(d=>({d,v:d.q.reduce((a,_,i)=>a+(S.ans[d.id+i]||0),0)}));
+ const max=Math.max(...sc.map(x=>x.v));const answered=Object.keys(S.ans).length;
+ const opts=[['0','Non'],['1','Parfois'],['2','Souvent']];
+ return `<div class="head"><div><div class="eyebrow">Diathèses de Ménétrier${p?' · '+esc(full(p)):''}</div><h1>Recherche du terrain</h1></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" data-act="resetq">Réinitialiser</button>${p&&max>0?`<button class="btn primary" data-act="saveterrain">${ic('check')}Enregistrer pour ${esc(p.prenom)}</button>`:''}</div></div>
+ <div class="grid g-2" style="align-items:start">
+  <section class="panel">${DIATH.map(d=>`<div style="margin-bottom:10px"><div class="panel-h" style="margin:10px 0 2px"><h2><span class="mono muted" style="font-weight:500">${d.id}</span> · ${d.nom}</h2></div>${d.q.map((q,i)=>`<div class="qrow"><span style="font-size:14.5px">${q}</span><div class="seg" role="group" aria-label="${esc(q)}">${opts.map(([v,l])=>`<button aria-pressed="${(S.ans[d.id+i]??-1)==+v}" data-ans="${d.id+i}" data-v="${v}">${l}</button>`).join('')}</div></div>`).join('')}</div>`).join('')}</section>
+  <section class="panel" style="position:sticky;top:20px"><div class="panel-h"><h2>Profil</h2><span class="note">${answered}/15 réponses</span></div>
+   <div class="diath">${sc.map(({d,v},di)=>`<div class="dbar t${di+1} ${v===max&&v>0?'top':''}"><div class="row"><span><b style="font-weight:600">${d.id} · ${d.nom}</b></span><span class="mono">${v}/6</span></div><div class="bar"><i style="width:${v/6*100}%"></i></div>${v===max&&v>0?`<div class="muted" style="font-size:13px;margin-top:5px">Catalyseur : ${d.oligo}</div>`:''}</div>`).join('')}</div>
+   ${max===0?'<p class="note" style="margin:16px 0 0">Répondez aux questions : la diathèse dominante apparaîtra ici.</p>':''}
+  </section>
+ </div>`;
+}
+
+/* ---------- Agenda ---------- */
+const isoD=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+function weekStart(off){const d=new Date(TODAY);const wd=(d.getDay()+6)%7;d.setDate(d.getDate()-wd+off*7);return d}
+function isoWeek(d){const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const n=(t.getUTCDay()+6)%7;t.setUTCDate(t.getUTCDate()-n+3);const f=new Date(Date.UTC(t.getUTCFullYear(),0,4));return 1+Math.round(((t-f)/864e5-3+((f.getUTCDay()+6)%7))/7)}
+function vAgenda(){
+ const ws=weekStart(S.wk||0);const days=[];for(let i=0;i<6;i++){const d=new Date(ws);d.setDate(ws.getDate()+i);days.push(d)}
+ const H0=8,H1=19,PX=52;const now=new Date();const nm=(now.getHours()-H0)*60+now.getMinutes();
+ const last=days[5];const lab=`${days[0].getDate()}${days[0].getMonth()!==last.getMonth()?' '+days[0].toLocaleDateString('fr-CH',{month:'long'}):''} – ${last.getDate()} ${last.toLocaleDateString('fr-CH',{month:'long',year:'numeric'})}`;
+ return `<div class="head"><div><div class="eyebrow">Semaine ${isoWeek(ws)} · ${lab}</div><h1>Agenda</h1></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><div class="seg" role="group" aria-label="Semaine"><button data-wk="-1" aria-label="Semaine précédente">‹</button><button data-wk="0" aria-pressed="${!S.wk}">Aujourd'hui</button><button data-wk="1" aria-label="Semaine suivante">›</button></div><button class="btn primary" data-act="newappt">${ic('plus')}Rendez-vous</button></div></div>
+ <section class="panel" style="padding:0"><div class="scroll-x"><div class="week">
+  <div class="hcell"></div>${days.map(d=>`<div class="hcell ${isoD(d)===TODAY_ISO?'today':''}"><span class="muted">${d.toLocaleDateString('fr-CH',{weekday:'short'})}</span><b>${d.getDate()}</b></div>`).join('')}
+  <div class="hours">${Array.from({length:H1-H0},(_,i)=>`<div>${pad(H0+i)}:00</div>`).join('')}</div>
+  ${days.map(d=>{const k=isoD(d);return `<div class="col ${k===TODAY_ISO?'today':''}" style="height:${(H1-H0)*PX}px" data-slotday="${k}">${DB.appts.filter(a=>a.d===k).map(a=>{const p=P(a.p);const top=((a.h-H0)*60+a.m)/60*PX;return `<button class="appt ${a.type==='Bilan'?'bilan':''}" style="top:${top+2}px;height:${Math.max(24,a.dur/60*PX-4)}px" data-appt="${a.id}"><b>${esc(p?full(p):a.nom)}</b><span class="mono muted">${pad(a.h)}:${pad(a.m)}</span> · ${esc(a.type)}</button>`}).join('')}${k===TODAY_ISO&&nm>0&&nm<(H1-H0)*60?`<div class="nowline" style="top:${nm/60*PX}px"></div>`:''}</div>`}).join('')}
+ </div></div></section>
+ <div class="chips"><span class="chip saf">Bilan de vitalité</span><span class="chip leaf">Suivi</span><span class="note">Touchez un rendez-vous pour le modifier.</span></div>`;
+}
+function apptForm(id,day){
+ const a=id?DB.appts.find(x=>x.id===id):null;const e=a||{d:day||TODAY_ISO,h:9,m:0,dur:60,p:S.pid||'',type:'Suivi'};let armed=false;
+ modal(`<div class="panel-h"><h3>${a?'Modifier le rendez-vous':'Nouveau rendez-vous'}</h3><button class="icon-btn" data-close="1" aria-label="Fermer">${ic('x')}</button></div>
+ <form class="form" id="fappt">
+  <label class="full">Patient·e<select class="input" id="ap-p"><option value="">Nouvelle personne (sans dossier)</option>${DB.patients.map(p=>`<option value="${p.id}" ${p.id===e.p?'selected':''}>${esc(full(p))}</option>`).join('')}</select></label>
+  <label class="full" id="ap-nomw" ${e.p?'hidden':''}>Nom de la personne<input class="input" id="ap-nom" value="${esc(e.nom||'')}"></label>
+  <label>Date<input class="input" id="ap-d" type="date" required value="${e.d}"></label><label>Heure<input class="input" id="ap-t" type="time" min="07:00" max="21:00" step="300" required value="${pad(e.h)}:${pad(e.m)}"></label>
+  <label>Type<select class="input" id="ap-type">${['Bilan','Suivi'].map(t=>`<option ${t===e.type?'selected':''}>${t}</option>`).join('')}</select></label><label>Durée (min)<input class="input" id="ap-dur" type="number" min="15" step="15" value="${e.dur}" required></label>
+  <p class="full form-err" id="ap-err" role="alert" hidden></p>
+  <div class="full" style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">${a?`<span style="display:flex;gap:8px"><button type="button" class="btn ghost danger" id="ap-del">Supprimer</button>${a.p?`<button type="button" class="btn ghost" data-open="${a.p}">Ouvrir la fiche</button>`:''}</span>`:'<span></span>'}<span style="display:flex;gap:8px"><button type="button" class="btn ghost" data-close="1">Annuler</button><button class="btn primary" type="submit">Enregistrer</button></span></div>
+ </form>`);
+ $('#ap-p').addEventListener('change',ev=>{$('#ap-nomw').hidden=!!ev.target.value;$('#ap-type').value=ev.target.value?$('#ap-type').value:'Bilan'});
+ $('#ap-del')?.addEventListener('click',ev=>{if(!armed){armed=true;ev.target.textContent='Confirmer la suppression';ev.target.classList.add('armed');return}DB.appts=DB.appts.filter(x=>x.id!==id);save();closeModal();toast('Rendez-vous supprimé');render()});
+ $('#fappt').addEventListener('submit',ev=>{ev.preventDefault();const pid=$('#ap-p').value,nom=$('#ap-nom').value.trim(),[h,m]=$('#ap-t').value.split(':').map(Number);const err=$('#ap-err');
+  if(!pid&&!nom){err.textContent='Choisissez un patient ou saisissez le nom de la personne.';err.hidden=false;return}
+  if(h<8||h>=19){err.textContent='L\'agenda couvre 8 h à 19 h.';err.hidden=false;return}
+  const data={d:$('#ap-d').value,h,m,dur:+$('#ap-dur').value||60,p:pid||null,nom:pid?'':nom,type:$('#ap-type').value};
+  if(a)Object.assign(a,data);else DB.appts.push({id:'a'+Date.now().toString(36),...data});
+  const target=new Date(data.d+'T12:00');S.wk=Math.round((weekStart(0)-weekStart(0))/6048e5)+Math.floor((target-weekStart(0))/6048e5);
+  save();closeModal();toast(a?'Rendez-vous modifié':'Rendez-vous ajouté');render()});
+}
+/* ---------- Gestion (devis, factures, avoirs, encaissements, dépenses, résultat) ---------- */
+function qrSvg(seedStr){
+ let seed=[...seedStr].reduce((a,ch)=>a*33+ch.charCodeAt(0),5381)>>>0;const rnd=()=>(seed=(seed*1664525+1013904223)>>>0)/4294967296;
+ const N=29,c=4;let r='';
+ const finder=(x,y)=>`<rect x="${x*c}" y="${y*c}" width="${7*c}" height="${7*c}" fill="var(--ink)"/><rect x="${x*c+c}" y="${y*c+c}" width="${5*c}" height="${5*c}" fill="var(--surface)"/><rect x="${x*c+2*c}" y="${y*c+2*c}" width="${3*c}" height="${3*c}" fill="var(--ink)"/>`;
+ for(let y=0;y<N;y++)for(let x=0;x<N;x++){const inF=(x<8&&y<8)||(x>N-9&&y<8)||(x<8&&y>N-9);const inC=x>=11&&x<=17&&y>=11&&y<=17;if(!inF&&!inC&&rnd()>.52)r+=`<rect x="${x*c}" y="${y*c}" width="${c}" height="${c}" fill="var(--ink)"/>`}
+ const m=N*c/2;
+ return `<svg viewBox="0 0 ${N*c} ${N*c}" width="132" height="132" role="img" aria-label="Aperçu du code QR, non scannable"><rect width="${N*c}" height="${N*c}" fill="var(--surface)"/>${r}${finder(0,0)}${finder(N-7,0)}${finder(0,N-7)}<rect x="${m-12}" y="${m-12}" width="24" height="24" fill="var(--surface)"/><rect x="${m-10}" y="${m-10}" width="20" height="20" fill="var(--ink)"/><rect x="${m-2}" y="${m-7}" width="4" height="14" fill="var(--surface)"/><rect x="${m-7}" y="${m-2}" width="14" height="4" fill="var(--surface)"/></svg>`;
+}
+function pendingDiff(){
+ if(!PENDING||!Array.isArray(PENDING.codes))return null;
+ const cur=new Map(TARIF590.codes.map(c=>[c.pos,c]));const nw=new Map(PENDING.codes.map(c=>[c.pos,c]));
+ const add=PENDING.codes.filter(c=>!cur.has(c.pos)),del=TARIF590.codes.filter(c=>!nw.has(c.pos)),ren=PENDING.codes.filter(c=>cur.has(c.pos)&&cur.get(c.pos).lib!==c.lib);
+ return {add,del,ren};
+}
+function pendingBanner(){
+ const df=pendingDiff();if(!df)return '';
+ return `<section class="panel pending"><div class="panel-h"><div><div class="eyebrow">Mise à jour proposée par la vérification annuelle</div><h2>Tarif 590 ${esc(PENDING.version)}</h2></div><span class="chip saf">À valider</span></div>
+ <div class="chips" style="margin-bottom:10px"><span class="chip leaf">${df.add.length} ajout(s)</span><span class="chip bad">${df.del.length} suppression(s)</span><span class="chip warn">${df.ren.length} libellé(s) modifié(s)</span></div>
+ ${[...df.add.map(c=>['+',c]),...df.del.map(c=>['−',c]),...df.ren.map(c=>['~',c])].slice(0,12).map(([k,c])=>`<div class="list-row"><span><b class="mono">${k} ${esc(c.pos)}</b> ${esc(c.lib)}</span></div>`).join('')}
+ ${PENDING.note?`<p class="note">${esc(PENDING.note)}</p>`:''}${PENDING.source?`<p class="note">Source : ${esc(PENDING.source)}</p>`:''}
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${CANEDIT?`<button class="btn primary sm" data-act="applytarif">${ic('check')}Appliquer cette version</button><button class="btn sm" data-act="dismisstarif">Écarter</button>`:'<span class="note">Seule la personne qui gère le cabinet peut appliquer la mise à jour.</span>'}</div></section>`;
+}
+function gTarif(){
+ const c=DB.cabinet;const ok=ibanOk(c.iban);
+ return `${pendingBanner()}${CLOUD?`<section class="panel"><div class="panel-h"><div><h2>Compte</h2><div class="note">${esc(SESSION?.user?.email||'')} · ${IS_ADMIN?'administratrice':'utilisateur'} · données hébergées à Zurich</div></div><div style="display:flex;gap:8px;flex-wrap:wrap">${DB.patients.length?'':'<button class="btn sm" data-act="examples">Charger des données d\'exemple</button>'}<button class="btn sm" data-act="logout">Se déconnecter</button></div></div></section>`:''}
+ <div class="grid g-2" style="align-items:start">
+  <section class="panel"><div class="panel-h"><h2>Identité de facturation</h2>${isExampleId()?'<span class="chip bad">Exemple</span>':'<span class="chip leaf">Personnalisé</span>'}</div>
+   <form class="form" id="fcab">
+    <label>Nom du cabinet<input class="input" id="cab-nom" value="${esc(c.nom)}"></label><label>Thérapeute<input class="input" id="cab-therapeute" value="${esc(c.therapeute)}"></label>
+    <label>Rue<input class="input" id="cab-rue" value="${esc(c.rue)}"></label><label>N°<input class="input" id="cab-no" value="${esc(c.no)}"></label>
+    <label>NPA<input class="input" id="cab-npa" value="${esc(c.npa)}"></label><label>Localité<input class="input" id="cab-ville" value="${esc(c.ville)}"></label>
+    <label>N° RCC<input class="input mono" id="cab-rcc" value="${esc(c.rcc)}"></label><label>Registre<input class="input" id="cab-registre" value="${esc(c.registre)}"></label>
+    <label class="full">IBAN<input class="input mono" id="cab-iban" value="${esc(fmtIban(c.iban))}"><span class="note" style="font-weight:400">${ok?'Clé de contrôle valide.':'IBAN suisse invalide : la QR-facture ne sera pas acceptée par les banques.'}</span></label>
+    <label>Prix par tranche de 5 min (CHF)<input class="input mono" id="cab-rate" type="number" min="0" step="0.05" value="${c.rate}"></label>
+    <div class="full" style="display:flex;justify-content:flex-end"><button class="btn primary" type="submit">Enregistrer</button></div>
+   </form>
+   <p class="note">Le RCC Z000000 et l'IBAN CH93 0076 2011 6238 5295 7 (exemple publié dans la documentation suisse de la QR-facture) sont fictifs. Remplacez-les avant tout envoi.</p>
+  </section>
+  <section class="panel" style="padding:6px 10px"><div class="panel-h" style="padding:10px 6px 0"><div><h2>Positions Tarif 590</h2><div class="note">Version ${esc(TARIF590.version)} · ${DBSRC?'base partagée, mise à jour annuelle':'catalogue intégré'}</div></div></div>
+   <div class="scroll-x"><table class="ptable"><thead><tr><th>Position</th><th>Désignation</th><th>Mode</th></tr></thead><tbody>
+   ${TARIF590.codes.map(x=>`<tr><td class="mono">${esc(x.pos)}</td><td>${esc(x.lib)}</td><td><span class="chip">${x.mode==='forfait'?'Forfait':'Par 5 min'}</span></td></tr>`).join('')}
+   </tbody></table></div>
+   <p class="note" style="padding:0 6px">Libellés traduits pour la démonstration : vérifiez-les avec la liste officielle de votre centre d'enregistrement.</p>
+  </section>
+ </div>`;
+}
+function vFactures(){
+ const tabs=[['docs','Documents'],['encaiss','Encaissements'],['depenses','Dépenses'],['resultat','Résultat'],['tarif','Réglages']];
+ const head=(S.gtab!=='tarif'?pendingBanner():'')+`<div class="head"><div><div class="eyebrow">Devis, factures et comptabilité du cabinet</div><h1>Gestion</h1></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">${S.gtab==='depenses'?`<button class="btn primary" data-act="newexp">${ic('plus')}Nouvelle dépense</button>`:`<button class="btn" data-act="newdoc" data-t="devis">${ic('plus')}Devis</button><button class="btn primary" data-act="newdoc" data-t="facture">${ic('plus')}Facture</button>`}</div></div>
+ <div class="tabs" role="tablist">${tabs.map(([id,l])=>`<button role="tab" aria-selected="${S.gtab===id}" data-gtab="${id}">${l}</button>`).join('')}</div>`;
+ return head+({docs:gDocs,encaiss:gEncaiss,depenses:gDepenses,resultat:gResultat,tarif:gTarif}[S.gtab])();
+}
+function gDocs(){
+ const list=DB.invoices.filter(i=>S.dtype==='all'||i.type===S.dtype);
+ const inv=DB.invoices.find(i=>i.no===S.inv)||list[0]||DB.invoices[0];
+ if(!inv)return `<section class="panel"><div class="empty"><h3>Aucun document pour l'instant</h3>Créez un premier devis ou une première facture avec les boutons ci-dessus.</div></section>`;
+ const p=P(inv.p);
+ const tot=invTotal(inv);const isF=isBill(inv);
+ const counts=t=>DB.invoices.filter(i=>i.type===t).length;
+ return `<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+  <div class="seg" role="group" aria-label="Type de document"><button aria-pressed="${S.dtype==='all'}" data-dtype="all">Tous</button>${['devis','facture','avoir'].map(t=>`<button aria-pressed="${S.dtype===t}" data-dtype="${t}">${TYPES[t][1]} <span class="muted">${counts(t)}</span></button>`).join('')}</div>
+  <span class="note">Tarif 590 · ${chf(RATEof())} par tranche de 5 min</span></div>
+ <div class="grid g-2" style="align-items:start">
+  <section class="panel" style="padding:6px 10px"><div class="scroll-x"><table class="ptable"><thead><tr><th>Document</th><th>Patient</th><th class="num">CHF</th><th>Statut</th></tr></thead><tbody>
+   ${list.map(i=>`<tr class="click" data-inv="${i.no}" style="${i.no===inv.no?'background:var(--leaf-soft)':''}"><td><span class="mono" style="font-size:13px">${i.no}</span><div class="muted" style="font-size:12px">${TYPES[i.type][0]} · ${fdate(i.d)}</div></td><td>${esc(full(P(i.p)))}</td><td class="num">${invTotal(i).toFixed(2)}</td><td>${statusChip(i.status)}</td></tr>`).join('')}
+  </tbody></table></div></section>
+  <article class="invoice-sheet">
+   <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap"><div><div class="eyebrow">${TYPES[inv.type][0]}</div><h3 class="mono" style="font-family:var(--f-mono);font-size:20px">${inv.no}</h3><div class="muted" style="font-size:13px">Date : ${fdate(inv.d,{day:'numeric',month:'long',year:'numeric'})}${inv.type==='devis'?' · valable 30 jours':''}${inv.ref?` · réf. ${inv.ref}`:''}</div></div>
+   <div style="text-align:right;font-size:14px"><b style="font-weight:600">${esc(full(p))}</b><div class="muted">${esc(p.ville)}</div>${statusChip(inv.status)}</div></div>
+   <dl class="t590"><div><dt>Fournisseur</dt><dd>${esc(DB.cabinet.therapeute)}</dd></div><div><dt>N° RCC</dt><dd class="mono">${esc(DB.cabinet.rcc)}${isExampleId()?' <span class="chip bad">exemple</span>':''}</dd></div><div><dt>Motif</dt><dd>${esc(inv.motif||'Maladie')}</dd></div><div><dt>Né·e le</dt><dd class="mono">${p.dob?fdate(p.dob,{day:'2-digit',month:'2-digit',year:'numeric'}):'—'}</dd></div><div><dt>N° d'assuré·e</dt><dd class="mono">${esc(p.noAssure||'—')}</dd></div><div><dt>Assurance</dt><dd>${esc(p.assurance||'—')}</dd></div></dl>
+   <div class="scroll-x"><table><thead><tr><th>Position</th><th>Prestation</th><th class="num">Unités</th><th class="num">CHF</th></tr></thead><tbody>
+    ${inv.lignes.map(l=>`<tr><td class="mono">${l[0]}</td><td>${esc(codeLib(l[0])||l[1])}<div class="muted" style="font-size:12px">${l[2]*5} min · Tarif 590</div></td><td class="num">${l[2]}</td><td class="num">${((inv.type==='avoir'?-1:1)*l[2]*RATEof()).toFixed(2)}</td></tr>`).join('')}
+   </tbody></table></div>
+   <div style="margin-top:12px"><div class="tot"><span class="muted">TVA</span><span>Exonéré (chiffre d'affaires sous le seuil)</span></div><div class="tot big"><span>Total</span><span class="mono" style="font-family:var(--f-display)">${chf(tot)}</span></div>
+   <div class="note" style="text-align:right">Arrêté à la somme de ${lettres(tot)}.</div></div>
+   ${inv.paiement?`<div class="chip leaf" style="margin-top:12px">${ic('check')} Réglé par ${inv.paiement.mode} le ${fdate(inv.paiement.d)}</div>`:''}
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
+    <button class="btn sm" data-pdf="${inv.no}">${ic('doc')}Télécharger le PDF</button>
+    ${inv.type==='devis'&&inv.status!=='converti'?`<button class="btn primary sm" data-convert="${inv.no}">${ic('arrow')}Convertir en facture</button>${inv.status==='ouvert'?`<button class="btn sm" data-accept="${inv.no}">Marquer accepté</button>`:''}`:''}
+    ${isF&&inv.status!=='payee'?`<button class="btn primary sm" data-act="pay" data-no="${inv.no}">${ic('check')}Enregistrer un règlement</button>`:''}
+    ${isF?`<button class="btn sm" data-avoir="${inv.no}">Créer un avoir</button><button class="btn sm" data-dup="${inv.no}">Repasser en devis</button>`:''}
+   </div>
+   ${isF&&inv.status!=='payee'?`<div class="qrbill"><div class="qr-l"><div class="eyebrow">Section paiement</div>${qrSvgReal(inv)}<div class="note">${ibanOk(DB.cabinet.iban)?'QR-facture scannable':'IBAN invalide'}</div></div>
+    <dl class="qr-r"><dt>Compte / Payable à</dt><dd class="mono">${fmtIban(DB.cabinet.iban)}</dd><dd>${esc(DB.cabinet.nom)} · ${esc(DB.cabinet.npa)} ${esc(DB.cabinet.ville)}</dd><dt>Informations</dt><dd>Facture ${inv.no} · Tarif 590</dd><dt>Payable par</dt><dd>${esc(full(p))} · ${esc(p.ville)}</dd><dt>Montant</dt><dd class="mono">CHF ${tot.toFixed(2)}</dd></dl></div>`:''}
+   <p class="note" style="margin:14px 0 0">${isExampleId()?'RCC et IBAN d\'exemple : à remplacer dans l\'onglet Tarif 590 avant tout envoi à une assurance.':'Positions Tarif 590 version '+esc(TARIF590.version)+'.'}</p>
+  </article>
+ </div>`;
+}
+function gEncaiss(){
+ const ent=DB.invoices.filter(i=>i.paiement).sort((a,b)=>b.paiement.d.localeCompare(a.paiement.d));
+ const by=MODES.map(m=>({m,v:ent.filter(i=>i.paiement.mode===m).reduce((a,i)=>a+invTotal(i),0)}));
+ const total=by.reduce((a,x)=>a+x.v,0);const mx=Math.max(1,...by.map(x=>Math.abs(x.v)));
+ return `<div class="grid g-2" style="align-items:start">
+  <section class="panel"><div class="panel-h"><h2>Par moyen de paiement</h2><span class="mono">${chf(total)}</span></div>
+   <div class="diath">${by.map((x,bi)=>`<div class="dbar top t${bi+1}"><div class="row"><span>${x.m}</span><span class="mono">${chf(x.v)}</span></div><div class="bar"><i style="width:${Math.max(0,x.v)/mx*100}%"></i></div></div>`).join('')}</div></section>
+  <section class="panel" style="padding:6px 10px"><div class="scroll-x"><table class="ptable"><thead><tr><th>Date</th><th>Document</th><th>Mode</th><th class="num">CHF</th></tr></thead><tbody>
+   ${ent.map(i=>`<tr class="click" data-gotodoc="${i.no}"><td class="mono" style="font-size:13px">${fdate(i.paiement.d,{day:'2-digit',month:'2-digit'})}</td><td><span class="mono" style="font-size:13px">${i.no}</span><div class="muted" style="font-size:12px">${esc(full(P(i.p)))}</div></td><td><span class="chip">${i.paiement.mode}</span></td><td class="num" style="${invTotal(i)<0?'color:var(--bad)':''}">${invTotal(i).toFixed(2)}</td></tr>`).join('')}
+  </tbody></table></div></section></div>`;
+}
+function gDepenses(){
+ const list=[...DB.depenses].sort((a,b)=>b.d.localeCompare(a.d));
+ const cats={};list.forEach(x=>cats[x.cat]=(cats[x.cat]||0)+x.m);
+ return `<div class="chips">${Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<span class="chip">${c} · <b class="mono">${chf(v)}</b></span>`).join('')}</div>
+ <section class="panel" style="padding:6px 10px"><div class="scroll-x"><table class="ptable"><thead><tr><th>Date</th><th>Libellé</th><th class="hide-m">Fournisseur</th><th class="hide-m">Catégorie</th><th class="num">CHF</th><th></th></tr></thead><tbody>
+  ${list.map(x=>`<tr><td class="mono" style="font-size:13px">${fdate(x.d,{day:'2-digit',month:'2-digit'})}</td><td>${esc(x.lib)}</td><td class="hide-m muted">${esc(x.four)}</td><td class="hide-m"><span class="chip">${esc(x.cat)}</span></td><td class="num">${x.m.toFixed(2)}</td><td><button class="icon-btn" aria-label="Supprimer ${esc(x.lib)}" data-rmexp="${DB.depenses.indexOf(x)}">${ic('x')}</button></td></tr>`).join('')}
+ </tbody></table></div></section>`;
+}
+function gResultat(){
+ const months=[1,0].map(k=>{const d=new Date(TODAY.getFullYear(),TODAY.getMonth()-k,1);const l=d.toLocaleDateString('fr-CH',{month:'long'});return [d.getFullYear()+'-'+pad(d.getMonth()+1),l.charAt(0).toUpperCase()+l.slice(1)]});
+ const rec=m=>DB.invoices.filter(i=>i.paiement&&i.paiement.d.startsWith(m)).reduce((a,i)=>a+invTotal(i),0);
+ const fac=m=>DB.invoices.filter(i=>i.type!=='devis'&&i.d.startsWith(m)).reduce((a,i)=>a+invTotal(i),0);
+ const dep=m=>DB.depenses.filter(x=>x.d.startsWith(m)).reduce((a,x)=>a+x.m,0);
+ const rows=months.map(([m,l])=>({m,l,r:rec(m),f:fac(m),d:dep(m)}));
+ if(S.per!=='all'&&!rows.find(x=>x.m===S.per))S.per=rows[1].m;
+ const cur=S.per==='all'?{l:rows[0].l+' – '+rows[1].l.toLowerCase(),r:rows.reduce((a,x)=>a+x.r,0),f:rows.reduce((a,x)=>a+x.f,0),d:rows.reduce((a,x)=>a+x.d,0)}:rows.find(x=>x.m===S.per);
+ const res=cur.r-cur.d;const mx=Math.max(...rows.map(x=>Math.max(x.r,x.d,x.f)),1);
+ const W=440,H=200,pl=48,pb=28,bw=26;const y=v=>H-pb-v/mx*(H-pb-14);
+ const ticks=[0,mx/2,mx].map(v=>Math.round(v/100)*100);
+ return `<div class="seg" role="group" aria-label="Période">${[...rows.map(x=>[x.m,x.l]),['all','Les deux mois']].map(([k,l])=>`<button aria-pressed="${S.per===k}" data-per="${k}">${l}</button>`).join('')}</div>
+ <div class="kpis"><div class="kpi t1"><div class="v mono" style="font-family:var(--f-display)">${Math.round(cur.r)}</div><div class="l">CHF encaissés</div></div><div class="kpi t3"><div class="v mono" style="font-family:var(--f-display)">${Math.round(cur.d)}</div><div class="l">CHF de dépenses</div></div><div class="kpi t2"><div class="v mono" style="font-family:var(--f-display);color:${res<0?'var(--bad)':'var(--ok)'}">${Math.round(res)}</div><div class="l">CHF de résultat</div></div></div>
+ <div class="grid g-2" style="align-items:start">
+  <section class="panel"><div class="panel-h"><h2>Facturé, encaissé, dépensé</h2></div><div class="scroll-x"><svg viewBox="0 0 ${W} ${H}" style="width:100%;min-width:300px;height:auto" role="img" aria-label="Comparaison mensuelle">
+   ${ticks.map(t=>`<line x1="${pl}" x2="${W-8}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)"/><text x="${pl-8}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace">${t}</text>`).join('')}
+   ${rows.map((x,i)=>{const gx=pl+30+i*((W-pl-40)/2);return [['f','var(--ink-3)'],['r','var(--leaf)'],['d','var(--saffron)']].map(([k,col],j)=>`<rect x="${gx+j*(bw+6)}" y="${y(x[k])}" width="${bw}" height="${Math.max(0,H-pb-y(x[k]))}" rx="3" fill="${col}"/>`).join('')+`<text x="${gx+(3*bw+12)/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="var(--ink-2)">${x.l}</text>`}).join('')}
+  </svg></div><div class="chips" style="margin-top:8px"><span class="chip"><i class="d d3" style="background:var(--ink-3)"></i>Facturé</span><span class="chip"><i class="d d3"></i>Encaissé</span><span class="chip"><i class="d d3" style="background:var(--saffron)"></i>Dépenses</span></div></section>
+  <section class="panel"><div class="panel-h"><h2>Compte de résultat · ${cur.l}</h2></div>
+   <div class="tot"><span>Chiffre d'affaires facturé</span><span class="mono">${chf(cur.f)}</span></div>
+   <div class="tot"><span>Recettes encaissées</span><span class="mono">${chf(cur.r)}</span></div>
+   <div class="tot"><span>Dépenses</span><span class="mono">− ${chf(cur.d)}</span></div>
+   <div class="tot big"><span>Résultat</span><span class="mono" style="font-family:var(--f-display)">${chf(res)}</span></div>
+   <p class="note" style="margin:10px 0 0">Résultat de trésorerie (encaissé moins dépensé), hors TVA.</p></section>
+ </div>`;
+}
+function payModal(no){
+ const i=DB.invoices.find(x=>x.no===no);
+ modal(`<div class="panel-h"><h3>Règlement ${i.no}</h3><button class="icon-btn" data-close="1" aria-label="Fermer">${ic('x')}</button></div>
+ <form class="form" id="fpay"><label>Montant<input class="input mono" id="pay-m" readonly value="${chf(invTotal(i))}"></label><label>Date<input class="input" id="pay-d" type="date" value="${TODAY_ISO}" required></label>
+ <div class="full"><div class="eyebrow" style="margin-bottom:6px">Moyen de paiement</div><div class="seg" role="radiogroup" id="pay-modes">${MODES.map((m,k)=>`<button type="button" aria-pressed="${k===1}" data-mode="${m}">${m}</button>`).join('')}</div></div>
+ <div class="full" style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn ghost" data-close="1">Annuler</button><button class="btn primary" type="submit">Enregistrer</button></div></form>`);
+ $('#pay-modes').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b)return;$('#pay-modes').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+ $('#fpay').addEventListener('submit',e=>{e.preventDefault();const mode=$('#pay-modes [aria-pressed="true"]').dataset.mode;i.paiement={mode,d:$('#pay-d').value};i.status='payee';save();closeModal();toast('Règlement enregistré · '+mode);render()});
+}
+function newExpense(){
+ modal(`<div class="panel-h"><h3>Nouvelle dépense</h3><button class="icon-btn" data-close="1" aria-label="Fermer">${ic('x')}</button></div>
+ <form class="form" id="fexp"><label class="full">Libellé<input class="input" id="ex-lib" required></label><label>Fournisseur<input class="input" id="ex-four"></label>
+ <label>Catégorie<select class="input" id="ex-cat">${['Locaux','Produits','Formation','Assurances','Frais généraux','Matériel'].map(c=>`<option>${c}</option>`).join('')}</select></label>
+ <label>Date<input class="input" id="ex-d" type="date" value="${TODAY_ISO}" required></label><label>Montant CHF<input class="input mono" id="ex-m" type="number" min="0" step="0.05" required></label>
+ <div class="full" style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn ghost" data-close="1">Annuler</button><button class="btn primary" type="submit">Ajouter</button></div></form>`);
+ $('#fexp').addEventListener('submit',e=>{e.preventDefault();DB.depenses.push({id:'e'+Date.now().toString(36),d:$('#ex-d').value,lib:$('#ex-lib').value.trim(),four:$('#ex-four').value.trim()||'—',cat:$('#ex-cat').value,m:+$('#ex-m').value});save();closeModal();toast('Dépense ajoutée');render()});
+}
+const nextNo=t=>{const Y=TODAY.getFullYear();const pre={facture:Y+'-',devis:'D-'+Y+'-',avoir:'AV-'+Y+'-',note:Y+'-'}[t];const nums=DB.invoices.filter(i=>(i.type==='note'?'facture':i.type)===(t==='note'?'facture':t)&&i.no.startsWith(pre)).map(i=>+i.no.split('-').pop());const n=Math.max(0,...nums)+1;return pre+String(n).padStart(t==='facture'||t==='note'?4:3,'0')};
+
+/* ---------- Fiche patient complète ---------- */
+const INSURERS=['Assura','Atupri','Avenir (Groupe Mutuel)','Concordia','CSS','EGK','Helsana','KPT','Mutuel Assurance','ÖKK','Philos','Sanitas','Swica','Sympany','Visana'];
+function avsOk(v){const d=v.replace(/\D/g,'');if(!/^756\d{10}$/.test(d))return false;let s=0;for(let i=0;i<12;i++)s+=+d[i]*(i%2?3:1);return (10-s%10)%10===+d[12]}
+const fmtAvs=v=>{const d=v.replace(/\D/g,'');return d.length===13?`${d.slice(0,3)}.${d.slice(3,7)}.${d.slice(7,11)}.${d.slice(11)}`:v};
+function patientForm(p){
+ const e=p||{};const v=k=>esc(e[k]??'');
+ const sel=(id,opts,cur)=>`<select class="input" id="pf-${id}">${opts.map(([val,l])=>`<option value="${val}" ${cur===val?'selected':''}>${l}</option>`).join('')}</select>`;
+ modal(`<div class="panel-h"><h3>${p?'Modifier la fiche':'Nouveau patient'}</h3><button class="icon-btn" data-close="1" aria-label="Fermer">${ic('x')}</button></div>
+ <form class="form" id="fpat" novalidate>
+  <h4 class="fsec full">Identité</h4>
+  <label>Prénom *<input class="input" id="pf-prenom" required value="${v('prenom')}" autocomplete="off"></label><label>Nom *<input class="input" id="pf-nom" required value="${v('nom')}" autocomplete="off"></label>
+  <label>Date de naissance *<input class="input" id="pf-dob" type="date" required max="${TODAY_ISO}" value="${v('dob')}"></label><label>Sexe${sel('sexe',[['F','Femme'],['M','Homme'],['X','Autre / non précisé']],e.sexe||'F')}</label>
+  <label class="full">Profession<input class="input" id="pf-metier" value="${v('metier')==='—'?'':v('metier')}"></label>
+  <h4 class="fsec full">Adresse</h4>
+  <label>Rue *<input class="input" id="pf-rue" required value="${v('rue')}"></label><label>N°<input class="input" id="pf-no" value="${v('no')}"></label>
+  <label>NPA *<input class="input" id="pf-npa" required inputmode="numeric" pattern="\\d{4}" value="${v('npa')}"></label><label>Localité *<input class="input" id="pf-ville" required value="${v('ville')}"></label>
+  <h4 class="fsec full">Contact</h4>
+  <label>Téléphone<input class="input" id="pf-tel" type="tel" value="${v('tel')==='—'?'':v('tel')}"></label><label>E-mail<input class="input" id="pf-email" type="email" value="${v('email')}"></label>
+  <h4 class="fsec full">Assurance</h4>
+  <label>Assurance complémentaire<input class="input" id="pf-assurance" list="insurers" value="${v('assurance')}"><datalist id="insurers">${INSURERS.map(i=>`<option value="${i}">`).join('')}</datalist></label>
+  <label>N° d'assuré·e<input class="input mono" id="pf-noAssure" value="${v('noAssure')}" placeholder="Sur la carte d'assuré"></label>
+  <label>N° AVS<input class="input mono" id="pf-avs" value="${v('avs')}" placeholder="756.1234.5678.97" inputmode="numeric"></label>
+  <label>Motif par défaut${sel('motif',MOTIFS.map(m=>[m,m]),e.motifDefaut||'Maladie')}</label>
+  <h4 class="fsec full">Santé</h4>
+  <label>Médecin traitant<input class="input" id="pf-medecin" value="${v('medecin')}"></label><label>Allergies connues<input class="input" id="pf-allergies" value="${v('allergies')}"></label>
+  <label class="full">Traitements en cours<input class="input" id="pf-traitements" value="${v('traitements')}"></label>
+  <label class="full">Antécédents<textarea class="input" id="pf-antecedents" rows="2">${v('antecedents')==='À compléter.'?'':v('antecedents')}</textarea></label>
+  <label class="full">Motif de consultation *<textarea class="input" id="pf-motifc" rows="2" required>${v('motif')}</textarea></label>
+  <p class="full form-err" id="pf-err" role="alert" hidden></p>
+  <div class="full" style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn ghost" data-close="1">Annuler</button><button class="btn primary" type="submit">${p?'Enregistrer':'Créer le dossier'}</button></div>
+ </form>`,true);
+ $('#fpat').addEventListener('submit',ev=>{ev.preventDefault();const g=k=>document.getElementById('pf-'+k).value.trim();const err=$('#pf-err');
+  const miss=[['prenom','le prénom'],['nom','le nom'],['dob','la date de naissance'],['rue','la rue'],['npa','le NPA'],['ville','la localité'],['motifc','le motif de consultation']].filter(([k])=>!g(k));
+  const errs=[];if(miss.length)errs.push('Il manque '+miss.map(m=>m[1]).join(', ')+'.');
+  if(g('npa')&&!/^\d{4}$/.test(g('npa')))errs.push('Le NPA suisse compte 4 chiffres.');
+  if(g('avs')&&!avsOk(g('avs')))errs.push('Le numéro AVS doit commencer par 756 et compter 13 chiffres (la clé de contrôle ne correspond pas).');
+  if(g('email')&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(g('email')))errs.push('L\'adresse e-mail n\'est pas valide.');
+  if(errs.length){err.textContent=errs.join(' ');err.hidden=false;return}
+  const data={prenom:g('prenom'),nom:g('nom'),dob:g('dob'),sexe:g('sexe'),metier:g('metier')||'—',rue:g('rue'),no:g('no'),npa:g('npa'),ville:g('ville'),tel:g('tel')||'—',email:g('email'),assurance:g('assurance'),noAssure:g('noAssure'),avs:g('avs')?fmtAvs(g('avs')):'',motifDefaut:g('motif'),medecin:g('medecin'),allergies:g('allergies'),traitements:g('traitements'),antecedents:g('antecedents')||'À compléter.',motif:g('motifc')};
+  if(p){Object.assign(p,data);save();closeModal();toast('Fiche mise à jour');render();return}
+  const np={id:'p'+Date.now(),...data,terrain:null,sym:[],hv:{sommeil:7,eau:1,sport:1,cafe:1},alimentation:'À compléter.',programme:[],seances:[{d:TODAY_ISO,type:'Bilan de vitalité',note:'Dossier créé.'}]};
+  DB.patients.unshift(np);save();closeModal();toast('Dossier créé');go('patients',{pid:np.id,pdetail:true,ptab:'synthese'})});
+}
+const ageOf=p=>{if(!p.dob)return p.age??'—';const b=new Date(p.dob+'T12:00');let a=TODAY.getFullYear()-b.getFullYear();if(TODAY<new Date(TODAY.getFullYear(),b.getMonth(),b.getDate()))a--;return a};
+
+/* ---------- Remèdes éditables ---------- */
+function syncRem(){REMEDIES.splice(0,REMEDIES.length,...DB.remedies);Object.keys(REM).forEach(k=>delete REM[k]);REMEDIES.forEach(r=>REM[r.id]=r)}
+function syncSym(){
+ const cs=DB.customSym||[];const gi=SYMPTOMS.findIndex(g=>g[0]==='Mes symptômes');
+ if(gi>=0)SYMPTOMS.splice(gi,1);if(cs.length)SYMPTOMS.push(['Mes symptômes',cs.map(s=>[s.id,s.n])]);
+ Object.keys(SYM).forEach(k=>delete SYM[k]);SYMPTOMS.forEach(([g,l])=>l.forEach(([id,n])=>SYM[id]={id,n,g}));
+}
+function remedyForm(id){
+ const r=id?REM[id]:null;const e=r||{nom:'',latin:'',cat:'phyto',part:'',props:[],sym:{},poso:'',prec:'',tradi:''};
+ let ind=Object.entries(e.sym);let confirmDel=false;
+ const symOpts=cur=>SYMPTOMS.map(([g,l])=>`<optgroup label="${esc(g)}">${l.map(([sid,n])=>`<option value="${sid}" ${sid===cur?'selected':''}>${esc(n)}</option>`).join('')}</optgroup>`).join('');
+ const indHtml=()=>ind.length?ind.map(([sid,w],i)=>`<div class="ind-row"><select class="input" data-ind="${i}">${symOpts(sid)}</select><select class="input" data-indw="${i}">${[1,2,3].map(n=>`<option value="${n}" ${+w===n?'selected':''}>Degré ${n}</option>`).join('')}</select><button type="button" class="icon-btn" data-indrm="${i}" aria-label="Retirer l'indication">${ic('x')}</button></div>`).join(''):'<p class="note" style="margin:0">Aucune indication : le remède n\'apparaîtra pas dans le répertoire.</p>';
+ modal(`<div class="panel-h"><h3>${r?'Modifier le remède':'Nouveau remède'}</h3><button class="icon-btn" data-close="1" aria-label="Fermer">${ic('x')}</button></div>
+ <form class="form" id="frem" novalidate>
+  <label>Nom *<input class="input" id="rf-nom" required value="${esc(e.nom)}"></label><label>Nom latin ou formule<input class="input" id="rf-latin" value="${esc(e.latin)}"></label>
+  <label>Famille<select class="input" id="rf-cat">${Object.entries(CATS).map(([k,v])=>`<option value="${k}" ${e.cat===k?'selected':''}>${v[0]}</option>`).join('')}</select></label><label>Partie utilisée, forme<input class="input" id="rf-part" value="${esc(e.part)}" placeholder="Racine, macérat, élixir…"></label>
+  <label class="full">Propriétés<input class="input" id="rf-props" value="${esc(e.props.join(', '))}" placeholder="Séparées par des virgules : sédative, digestive…"></label>
+  <div class="full"><div class="fsec" style="margin-bottom:8px">Indications pour le répertoire</div><div id="rf-ind" class="ind-list">${indHtml()}</div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm" id="rf-addind">${ic('plus')}Ajouter une indication</button></div>
+   <div class="ind-new"><input class="input" id="rf-newsym" placeholder="Symptôme absent de la liste ? Saisissez-le ici"><button type="button" class="btn sm" id="rf-addsym">Créer</button></div></div>
+  <label class="full">Posologie usuelle<textarea class="input" id="rf-poso" rows="2">${esc(e.poso)}</textarea></label>
+  <label class="full">Précautions et contre-indications<textarea class="input" id="rf-prec" rows="2">${esc(e.prec)}</textarea></label>
+  <label class="full">Usage traditionnel, notes<textarea class="input" id="rf-tradi" rows="2">${esc(e.tradi)}</textarea></label>
+  <p class="full form-err" id="rf-err" role="alert" hidden></p>
+  <div class="full" style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">${r?`<button type="button" class="btn ghost danger" id="rf-del">Supprimer</button>`:'<span></span>'}<span style="display:flex;gap:8px"><button type="button" class="btn ghost" data-close="1">Annuler</button><button class="btn primary" type="submit">${r?'Enregistrer':'Ajouter le remède'}</button></span></div>
+ </form>`,true);
+ const box=$('#rf-ind');const redraw=()=>{box.innerHTML=indHtml()};
+ box.addEventListener('change',ev=>{const t=ev.target;if(t.dataset.ind!==undefined)ind[+t.dataset.ind][0]=t.value;if(t.dataset.indw!==undefined)ind[+t.dataset.indw][1]=+t.value});
+ box.addEventListener('click',ev=>{const b=ev.target.closest('[data-indrm]');if(b){ind.splice(+b.dataset.indrm,1);redraw()}});
+ $('#rf-addind').addEventListener('click',()=>{const used=new Set(ind.map(x=>x[0]));const first=Object.keys(SYM).find(k=>!used.has(k))||Object.keys(SYM)[0];ind.push([first,2]);redraw();box.querySelector(`[data-ind="${ind.length-1}"]`)?.focus()});
+ $('#rf-addsym').addEventListener('click',()=>{const n=$('#rf-newsym').value.trim();if(!n)return;DB.customSym=DB.customSym||[];const sid='u'+Date.now().toString(36);DB.customSym.push({id:sid,n});syncSym();save();ind.push([sid,2]);$('#rf-newsym').value='';redraw();toast('Symptôme « '+n+' » créé')});
+ $('#rf-del')?.addEventListener('click',ev=>{if(!confirmDel){confirmDel=true;ev.target.textContent='Confirmer la suppression';ev.target.classList.add('armed');return}
+  DB.remedies=DB.remedies.filter(x=>x.id!==id);DB.patients.forEach(p=>p.programme=p.programme.filter(x=>x.r!==id));syncRem();save();closeModal();S.mid=REMEDIES[0]?.id;toast('Remède supprimé');render()});
+ $('#frem').addEventListener('submit',ev=>{ev.preventDefault();const g=k=>document.getElementById('rf-'+k).value.trim();const err=$('#rf-err');
+  if(!g('nom')){err.textContent='Indiquez au moins le nom du remède.';err.hidden=false;return}
+  const sym={};ind.forEach(([sid,w])=>{if(SYM[sid])sym[sid]=Math.max(sym[sid]||0,+w)});
+  const data={nom:g('nom'),latin:g('latin'),cat:g('cat'),part:g('part')||'—',props:g('props').split(',').map(x=>x.trim()).filter(Boolean),sym,poso:g('poso')||'À préciser.',prec:g('prec')||'Aucune précaution renseignée.',tradi:g('tradi')||'—'};
+  if(r){Object.assign(r,data,{edited:true})}else{const nr={id:'r'+Date.now().toString(36),...data,custom:true};DB.remedies.push(nr);S.mid=nr.id;S.mcat='all';S.mq=''}
+  syncRem();save();closeModal();toast(r?'Remède mis à jour':'Remède ajouté');render()});
+}
+/* ---------- Modales ---------- */
+function modal(html,wide){$('#layer').innerHTML=`<div class="scrim" data-close="1"><div class="modal${wide?' wide':''}" role="dialog" aria-modal="true">${html}</div></div>`;const f=$('#layer input,#layer select');f&&f.focus()}
+function closeModal(){$('#layer').innerHTML=''}
+function newPatient(){patientForm(null)}
+function newInvoice(type='facture'){
+ modal(`<div class="panel-h"><h3>Nouveau document</h3><button class="icon-btn" data-close="1" aria-label="Fermer">${ic('x')}</button></div>
+ <form class="form" id="fi"><label>Type<select class="input" id="ni-type">${['facture','devis','note'].map(t=>`<option value="${t}" ${t===type?'selected':''}>${TYPES[t][0]}</option>`).join('')}</select></label>
+ <label>Patient<select class="input" id="ni-p">${DB.patients.map(p=>`<option value="${p.id}" ${p.id===S.pid?'selected':''}>${esc(full(p))}</option>`).join('')}</select></label>
+ <label class="full">Motif du traitement<select class="input" id="ni-motif">${MOTIFS.map(m=>`<option>${m}</option>`).join('')}</select></label>
+ <label class="full">Position Tarif 590<select class="input" id="ni-code">${TARIF590.codes.map(t=>`<option value="${esc(t.pos)}">${esc(t.pos)} · ${esc(t.lib)}</option>`).join('')}</select></label>
+ <label>Durée (min)<input class="input" id="ni-min" type="number" min="5" step="5" value="60" required></label><label>Montant<input class="input mono" id="ni-tot" readonly value="${chf(120)}"></label>
+ <div class="full note" id="ni-let">${lettres(120)}</div>
+ <div class="full" style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn ghost" data-close="1">Annuler</button><button class="btn primary" type="submit">Créer</button></div></form>`);
+ const upd=()=>{const v=Math.ceil((+$('#ni-min').value||0)/5)*RATEof();$('#ni-tot').value=chf(v);$('#ni-let').textContent=lettres(v)};$('#ni-min').addEventListener('input',upd);
+ $('#fi').addEventListener('submit',e=>{e.preventDefault();const code=$('#ni-code').value;const t=TARIF590.codes.find(x=>x.pos===code);const ty=$('#ni-type').value;
+  const inv={no:nextNo(ty),type:ty,p:$('#ni-p').value,d:TODAY_ISO,motif:$('#ni-motif').value,lignes:[[code,t.lib,Math.ceil((+$('#ni-min').value||0)/5)]],status:ty==='devis'?'ouvert':'envoyee'};
+  DB.invoices.unshift(inv);save();closeModal();toast(TYPES[ty][0]+' '+inv.no+' créé'+(ty==='facture'||ty==='note'?'e':''));go('factures',{inv:inv.no,gtab:'docs',dtype:'all'})});
+}
+/* ---------- Rendu + événements ---------- */
+function render(){
+ renderNav();
+ const v={accueil:vAccueil,patients:vPatients,bilan:vBilan,matiere:vMatiere,terrain:vTerrain,agenda:vAgenda,factures:vFactures}[S.view];
+ $('#view').innerHTML=v();
+ if(S.view==='matiere'&&REM[S.mid])drawHerb(REM[S.mid]);
+}
+document.addEventListener('click',e=>{
+ const t=e.target.closest('[data-go],[data-open],[data-act],[data-ptab],[data-sym],[data-mid],[data-mcat],[data-addrx],[data-rmrx],[data-ans],[data-mono],[data-inv],[data-pay],[data-close],[data-gtab],[data-dtype],[data-per],[data-convert],[data-accept],[data-avoir],[data-dup],[data-gotodoc],[data-rmexp],[data-pdf],[data-appt],[data-wk]');
+ if(!t)return;const d=t.dataset;
+ if(d.close!==undefined){if(e.target===t||t.tagName==='BUTTON')closeModal();return}
+ if(d.go)return go(d.go,d.go==='patients'?{pdetail:false}:{});
+ if(d.appt)return apptForm(d.appt);
+ if(d.wk!==undefined){S.wk=d.wk==='0'?0:(S.wk||0)+(+d.wk);return render()}
+ if(d.open){closeModal();return go('patients',{pid:d.open,pdetail:true,ptab:'synthese'})}
+ if(d.ptab){S.ptab=d.ptab;return render()}
+ if(d.mid){S.mid=d.mid;render();if(innerWidth<980)document.querySelector('.plate')?.scrollIntoView({behavior:'smooth',block:'start'});return}
+ if(d.mcat){S.mcat=d.mcat;return render()}
+ if(d.mono)return go('matiere',{mid:d.mono,mq:'',mcat:'all'});
+ if(d.inv){S.inv=d.inv;render();if(innerWidth<980)document.querySelector('.invoice-sheet')?.scrollIntoView({behavior:'smooth',block:'start'});return}
+ if(d.gtab){S.gtab=d.gtab;return render()}
+ if(d.dtype){S.dtype=d.dtype;return render()}
+ if(d.per){S.per=d.per;return render()}
+ if(d.gotodoc)return go('factures',{gtab:'docs',dtype:'all',inv:d.gotodoc});
+ if(d.accept){DB.invoices.find(x=>x.no===d.accept).status='accepte';save();toast('Devis accepté');return render()}
+ if(d.convert){const q=DB.invoices.find(x=>x.no===d.convert);const f={no:nextNo('facture'),type:'facture',p:q.p,d:TODAY_ISO,ref:q.no,lignes:JSON.parse(JSON.stringify(q.lignes)),status:'envoyee'};q.status='converti';DB.invoices.unshift(f);save();toast('Devis '+q.no+' converti en facture '+f.no);S.inv=f.no;S.dtype='all';return render()}
+ if(d.avoir){const q=DB.invoices.find(x=>x.no===d.avoir);const f={no:nextNo('avoir'),type:'avoir',p:q.p,d:TODAY_ISO,ref:q.no,lignes:JSON.parse(JSON.stringify(q.lignes)),status:'ouvert'};DB.invoices.unshift(f);save();toast('Avoir '+f.no+' créé');S.inv=f.no;S.dtype='all';return render()}
+ if(d.dup){const q=DB.invoices.find(x=>x.no===d.dup);const f={no:nextNo('devis'),type:'devis',p:q.p,d:TODAY_ISO,ref:q.no,lignes:JSON.parse(JSON.stringify(q.lignes)),status:'ouvert'};DB.invoices.unshift(f);save();toast('Devis '+f.no+' créé');S.inv=f.no;S.dtype='all';return render()}
+ if(d.rmexp!==undefined){const x=DB.depenses.splice(+d.rmexp,1)[0];save();toast('Dépense supprimée : '+x.lib);return render()}
+ if(d.addrx){const p=P(S.pid);if(p&&!p.programme.some(x=>x.r===d.addrx)){p.programme.push({r:d.addrx,note:''});save();toast(REM[d.addrx].nom+' ajouté au programme de '+p.prenom)}return render()}
+ if(d.rmrx!==undefined){const p=P(S.pid);const r=p.programme.splice(+d.rmrx,1)[0];save();toast(REM[r.r].nom+' retiré');return render()}
+ if(d.ans){S.ans[d.ans]=+d.v;return render()}
+ if(d.act==='newpatient')return newPatient();
+ if(d.act==='newappt')return apptForm(null);
+ if(d.act==='logout')return logout();
+ if(d.act==='examples')return loadExamples();
+ if(d.act==='editpatient')return patientForm(P(S.pid));
+ if(d.act==='newrem')return remedyForm(null);
+ if(d.act==='editrem')return remedyForm(S.mid);
+ if(d.act==='applytarif')return applyPending();
+ if(d.act==='dismisstarif')return dismissPending();
+ if(d.pdf)return downloadPdf(d.pdf);
+ if(d.act==='newdoc')return newInvoice(d.t);
+ if(d.act==='newexp')return newExpense();
+ if(d.act==='pay')return payModal(d.no);
+ if(d.act==='backlist')return go('patients',{pdetail:false});
+ if(d.act==='reperto'){const p=P(S.pid);S.sel=new Set(p?p.sym:[]);return go('bilan')}
+ if(d.act==='loadsym'){const p=P(S.pid);S.sel=new Set(p.sym);return render()}
+ if(d.act==='clearsym'){S.sel=new Set();return render()}
+ if(d.act==='resetq'){S.ans={};return render()}
+ if(d.act==='saveterrain'){const sc=DIATH.map(x=>({id:x.id,v:x.q.reduce((a,_,i)=>a+(S.ans[x.id+i]||0),0)})).sort((a,b)=>b.v-a.v);const p=P(S.pid);p.terrain=sc[0].id;save();toast('Terrain enregistré pour '+p.prenom);return}
+ if(d.act==='copyrx'){const p=P(S.pid);const txt=`Programme d'hygiène vitale — ${full(p)}\n\n`+p.programme.filter(x=>REM[x.r]).map(x=>{const r=REM[x.r];return `• ${r.nom} (${r.latin})\n  ${r.poso}${x.note?'\n  Note : '+x.note:''}\n  Précaution : ${r.prec}`}).join('\n\n');
+  const ok=()=>toast('Programme copié');navigator.clipboard?.writeText(txt).then(ok).catch(()=>toast('Copie refusée par le navigateur'));return}
+});
+document.addEventListener('change',e=>{const s=e.target.dataset.sym;if(s){e.target.checked?S.sel.add(s):S.sel.delete(s);render();const el=document.getElementById('s-'+s);el&&el.focus()}});
+document.addEventListener('input',e=>{
+ if(e.target.id==='pq'||e.target.id==='mq'){const id=e.target.id,pos=e.target.selectionStart;S[id]=e.target.value;render();const el=document.getElementById(id);el.focus();el.setSelectionRange(pos,pos)}
+});
+document.addEventListener('submit',e=>{if(e.target.id!=='fcab')return;e.preventDefault();const g=k=>document.getElementById('cab-'+k).value.trim();
+ const iban=g('iban').replace(/\s/g,'').toUpperCase();
+ Object.assign(DB.cabinet,{nom:g('nom'),therapeute:g('therapeute'),rue:g('rue'),no:g('no'),npa:g('npa'),ville:g('ville'),rcc:g('rcc').toUpperCase(),registre:g('registre'),iban,rate:+g('rate')||10});save();toast(ibanOk(iban)?'Identité de facturation enregistrée':'Enregistré, mais l\'IBAN est invalide');render()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>render());
+new MutationObserver(()=>{if(S.view==='matiere')drawHerb(REM[S.mid])}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+boot();
+</script>
+
+</body>
+</html>
