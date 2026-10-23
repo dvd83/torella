@@ -23,7 +23,7 @@ create table public.app_admins (user_id uuid primary key references auth.users(i
 alter table public.app_admins enable row level security;
 create policy "admins_select_self" on public.app_admins for select to authenticated using (user_id = (select auth.uid()));
 
-create or replace function public.is_admin() returns boolean language sql stable security definer set search_path = '' as $$
+create or replace function public.is_admin() returns boolean language sql stable security invoker set search_path = '' as $$
   select exists (select 1 from public.app_admins where user_id = auth.uid());
 $$;
 revoke execute on function public.is_admin() from public, anon;
